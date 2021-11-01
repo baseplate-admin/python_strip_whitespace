@@ -3,6 +3,7 @@ from minify_html import minify as rs_minifier
 
 # Compressors
 from .compressors import *
+
 # Decompressors
 from .decompressors import *
 
@@ -21,9 +22,8 @@ def minify(buffer: bytes) -> str:
     elif buffer_type == "plain":
         decompressed_buffer = buffer
 
-    first_iter = py_minifier(decompressed_buffer.decode(), comments=False)
-    second_iter = rs_minifier(
-        first_iter,
+    first_iter = rs_minifier(
+        decompressed_buffer.decode(),
         minify_js=True,
         minify_css=True,
         # do_not_minify_doctype=True,
@@ -31,13 +31,15 @@ def minify(buffer: bytes) -> str:
         # keep_closing_tags=True,
         remove_processing_instructions=True,
     )
-    second_iter = second_iter.encode()
+    last_iter = py_minifier(first_iter, comments=False)
+
+    last_iter = last_iter.encode()
 
     if buffer_type == "gz":
-        return_buffer = gz_compress(second_iter)
+        return_buffer = gz_compress(last_iter)
     elif buffer_type == "br":
-        return_buffer = br_compress(second_iter)
+        return_buffer = br_compress(last_iter)
     elif buffer_type == "plain":
-        return_buffer = second_iter
+        return_buffer = last_iter
 
     return return_buffer

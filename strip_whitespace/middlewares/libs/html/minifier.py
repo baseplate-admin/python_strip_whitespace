@@ -76,18 +76,20 @@ def condense_script(html: str) -> str:
 
 
 def clean_unneeded_html_tags(html: str) -> str:
-    """Clean unneeded optional html tags.
-
-    >>> clean_unneeded_html_tags('a<body></img></td>b</th></tr></hr></br>c')
-    'abc'
-    """
-    for tag_to_remove in """</area> </base> <body> </body> </br> </col>
-        </colgroup> </dd> </dt> <head> </head> </hr> <html> </html> </img>
-        </input> </li> </link> </meta> </option> </param> <tbody> </tbody>
-        </td> </tfoot> </th> </thead> </tr> </basefont> </isindex> </param>
-            """.split():
-        html = html.replace(tag_to_remove, "")
-    return html  # May look silly but Emmet does this and is wrong.
+    """Clean unneeded optional html tags."""
+    tags_to_remove = [
+        "</area>",
+        "</base>",
+        "</col>",
+        "</colgroup>",
+        "</img>",
+        "</input>",
+        "</link>",
+        "</meta>",
+    ]
+    for i in tags_to_remove:
+        html = html.replace(i, "")
+    return html
 
 
 def remove_html_comments(html: str) -> str:
