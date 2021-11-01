@@ -9,6 +9,9 @@ packages = [
     "strip_whitespace",
     "strip_whitespace.middlewares",
     "strip_whitespace.middlewares.libs",
+    "strip_whitespace.middlewares.libs.compressors",
+    "strip_whitespace.middlewares.libs.decompressors",
+    "strip_whitespace.middlewares.libs.html",
 ]
 
 package_data = {"": ["*"]}

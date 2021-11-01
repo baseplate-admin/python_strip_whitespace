@@ -2,9 +2,9 @@ from .html import html_minify as py_minifier
 from minify_html import minify as rs_minifier
 
 # Compressors
-from compressors import *
+from .compressors import *
 # Decompressors
-from decompressors import *
+from .decompressors import *
 
 from ._guess_content_type import guess
 

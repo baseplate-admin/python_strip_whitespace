@@ -51,7 +51,7 @@ Install with pip from pypi::
 
     python -m pip install django_stip_whitespace
 
-Install with pip from github::
+Install with pip from github ( Development )::
     
     python -m pip install https://codeload.github.com/baseplate-admin/django_strip_whitespace/zip/refs/heads/main
 
