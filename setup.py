@@ -6,9 +6,9 @@ here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / "README.rst").read_text(encoding="utf-8")
 
 packages = [
-    "django_strip_whitespace",
-    "django_strip_whitespace.middlewares",
-    "django_strip_whitespace.middlewares.libs",
+    "strip_whitespace",
+    "strip_whitespace.middlewares",
+    "strip_whitespace.middlewares.libs",
 ]
 
 package_data = {"": ["*"]}

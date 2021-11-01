@@ -60,12 +60,12 @@ Then include it in your django project::
 
     MIDDLEWARE = [
         ...
-        "django_strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.HTMLStripWhiteSpace",
+        "strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.HTMLStripWhiteSpace",
     ]
 
 Or if you like::
 
-    MIDDLEWARE += "django_strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.HTMLStripWhiteSpace"
+    MIDDLEWARE += "strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.HTMLStripWhiteSpace"
 
 
 Contributing :
