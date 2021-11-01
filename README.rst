@@ -31,7 +31,13 @@ So for example if you have a file like this::
 
 The resulted HTML will have an error and AlpineJS won't init.
 
-  
+*   Disables the use of &nbsp; in HTML. Although this can be easily mitigated by using CSS pesudo element. 
+
+Use this::
+    selector::before { 
+        content : '\00a0\00a0'
+    }
+    
 
 Requirements :
 --------------

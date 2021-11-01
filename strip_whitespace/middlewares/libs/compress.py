@@ -32,7 +32,6 @@ def minify(buffer: bytes) -> str:
         remove_processing_instructions=True,
     )
     last_iter = py_minifier(first_iter, comments=False)
-
     last_iter = last_iter.encode()
 
     if buffer_type == "gz":
