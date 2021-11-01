@@ -9,7 +9,6 @@ Brotli = "*"
 minify-html = "*"
 
 [dev-packages]
-pipenv-setup = "*"
 black = "*"
 
 [requires]
