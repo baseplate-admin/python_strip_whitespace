@@ -64,4 +64,4 @@ If you like this project add a star.
 
 Roadmap :
 =========
-Add line break to InlineJS
+* Add line break to InlineJS
