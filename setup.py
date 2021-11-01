@@ -17,7 +17,7 @@ install_requires = ["Brotli", "django>=3.1.13", "minify-html>=0.6.10,<0.7.0"]
 
 setup_kwargs = setup(
     name="django-strip-whitespace",
-    version="0.0.3",
+    version="0.0.4",
     description="A powerful HTML whitespace remover",
     long_description=long_description,
     author="baseplate-admin",
