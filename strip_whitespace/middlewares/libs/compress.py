@@ -26,8 +26,8 @@ def minify(buffer: bytes) -> str:
         decompressed_buffer.decode(),
         minify_js=True,
         minify_css=True,
-        # do_not_minify_doctype=True,
-        # keep_html_and_head_opening_tags=True,
+        do_not_minify_doctype=True,
+        keep_html_and_head_opening_tags=True,
         # keep_closing_tags=True,
         remove_processing_instructions=True,
     )
