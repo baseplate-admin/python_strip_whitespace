@@ -23,7 +23,7 @@ So for example if you have a file like this::
     <div x-init="
             () => {
                 console.log('Hello World')
-                console.log("Hello World Again") // This will cause error because theres no ";"
+                console.log("Hello World Again") // This will cause error because theres no ;
             }
         "
     > </div>
