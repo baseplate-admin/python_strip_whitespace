@@ -11,9 +11,8 @@ minify-html = "*"
 [dev-packages]
 black = "*"
 twine = '*'
-
-[test]
 readme-renderer = '*'
+
 
 [requires]
 python_version = "3.9"
