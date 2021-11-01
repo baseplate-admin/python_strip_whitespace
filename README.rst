@@ -55,6 +55,18 @@ Install with pip from github::
     python -m pip install https://codeload.github.com/baseplate-admin/django_strip_whitespace/zip/refs/heads/main
 
 
+Then include it in your django project::
+
+    MIDDLEWARE = [
+        ...
+        "django_strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.HTMLStripWhiteSpace",
+    ]
+
+Or if you like::
+
+    MIDDLEWARE += "django_strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.HTMLStripWhiteSpace"
+
+
 Contributing :
 ==============
 I created this project for my own use.
