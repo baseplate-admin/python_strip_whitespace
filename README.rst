@@ -8,9 +8,9 @@ A powerful tool to optimize HTML
 Why use django_stip_whitespace ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    *   It speeds up website by reducing the HTML size.
-    *   Its mostly based on C(gzip) and Rust( minify-html : https://pypi.org/project/minify-html/ ) libraries
-    *   Can be used with 'django.middleware.gzip.GZipMiddleware'
+*   It speeds up website by reducing the HTML size.
+*   Its mostly based on C(gzip) and Rust( minify-html : https://pypi.org/project/minify-html/ ) libraries
+*   Can be used with 'django.middleware.gzip.GZipMiddleware'
 
 Why souldn't you use django_stip_whitespace ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
