@@ -9,7 +9,7 @@ Why use django_stip_whitespace ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *   It speeds up website by reducing the HTML size.
-*   Its mostly based on C(gzip) and Rust( minify-html : https://pypi.org/project/minify-html/ ) libraries
+*   Its mostly based on C( gzip ) and Rust( minify-html : https://pypi.org/project/minify-html/ ) libraries
 *   Can be used with 'django.middleware.gzip.GZipMiddleware'
 *   It can automagically minify inline CSS, JS
 
@@ -64,4 +64,5 @@ If you like this project add a star.
 
 Roadmap :
 =========
-* Add line break to InlineJS
+*    Add line break to InlineJS
+*    Add Brotli Compression ? ( Should Work )
