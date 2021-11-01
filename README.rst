@@ -36,9 +36,9 @@ The resulted HTML will have an error and AlpineJS won't init.
 Requirements :
 --------------
 
-*    Django > 3 ( Should work with version 2? )
 *    Brotli
 *    minify-html
+*    Django > 3 ( Should work with version 2? )
 *    Python 3 ( Should work with all version? )
 
 User guide :
@@ -79,3 +79,4 @@ Roadmap :
 =========
 *    Add line break to InlineJS
 *    Add Brotli Compression ? ( Should Work )
+*    Add PyPy support
