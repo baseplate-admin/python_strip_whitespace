@@ -1,5 +1,5 @@
 HTML Whitespace remover for Django
-=================================
+==================================
 
 Introduction :
 --------------
