@@ -8,7 +8,7 @@ long_description = (here / "README.rst").read_text(encoding="utf-8")
 packages = [
     "django_strip_whitespace",
     "django_strip_whitespace.middlewares",
-    "django_strip_whitespace.middlewares.lib",
+    "django_strip_whitespace.middlewares.libs",
 ]
 
 package_data = {"": ["*"]}

@@ -1,4 +1,4 @@
-HTML Whitespce remover for Django
+HTML Whitespace remover for Django
 =================================
 
 Introduction :
