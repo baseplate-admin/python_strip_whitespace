@@ -1,9 +1,11 @@
+from .html import html_minify as py_minifier
 from minify_html import minify as rs_minifier
-from ._html_minifier import html_minify as py_minifier
-from ._decompress_gzip import decompress as gz_decompress
-from ._decompress_brotli import decompress as br_decompress
-from ._compress_brotli import compress as br_compress
-from ._compress_gzip import compress as gz_compress
+
+# Compressors
+from compressors import *
+# Decompressors
+from decompressors import *
+
 from ._guess_content_type import guess
 
 

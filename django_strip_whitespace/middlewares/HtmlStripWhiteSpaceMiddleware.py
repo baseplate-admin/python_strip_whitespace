@@ -3,7 +3,7 @@ This module strips unnecessary whitespaces from HTML.
 """
 
 from django.utils.deprecation import MiddlewareMixin
-from .lib import minify
+from .libs import minify
 
 
 class HTMLStripWhiteSpace(MiddlewareMixin):

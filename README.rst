@@ -78,5 +78,5 @@ If you like this project add a star.
 Roadmap :
 =========
 *    Add line break to InlineJS
-*    Add Brotli Compression ? ( Should Work )
+*    Add ZStandard Compression ? ( Should Work )
 *    Add PyPy support

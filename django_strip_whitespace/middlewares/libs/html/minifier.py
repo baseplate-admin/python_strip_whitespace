@@ -2,13 +2,13 @@
     HTML Minifier functions for CSS-HTML-JS-Minify.
     Source : https://github.com/juancarlospaco/css-html-js-minify/blob/master/css_html_js_minify/html_minifier.py
     License : https://github.com/juancarlospaco/css-html-js-minify/blob/master/LICENSE.gpl.txt
+    Rewrited By : Baseplate-Admin (https://github.com/baseplate-admin/)
 """
-
 import re
 from typing import Optional
 
 
-def condense_html_whitespace(html: str):
+def condense_html_whitespace(html: str) -> str:
     """Condense HTML, but be safe first if it have textareas or pre tags.
 
     >>> condense_html_whitespace('<i>  <b>    <a> test </a>    </b> </i><br>')
@@ -38,7 +38,7 @@ def condense_html_whitespace(html: str):
     return "".join(split)
 
 
-def rawtag(string: str):
+def rawtag(string: str) -> str:
     if re.match("<\\s*pre.*>", string, flags=re.IGNORECASE):
         return "pre"
     if re.match("<\\s*textarea.*>", string, flags=re.IGNORECASE):
@@ -49,7 +49,7 @@ def rawtag(string: str):
         return "/txt"
 
 
-def condense_style(html: str):
+def condense_style(html: str) -> str:
     """Condense style html tags.
 
     >>> condense_style('<style type="text/css">*{border:0}</style><p>a b c')
@@ -62,7 +62,7 @@ def condense_style(html: str):
     )
 
 
-def condense_script(html: str):
+def condense_script(html: str) -> str:
     """Condense script html tags.
 
     >>> condense_script('<script type="text/javascript"> </script><p>a b c')
@@ -75,7 +75,7 @@ def condense_script(html: str):
     )
 
 
-def clean_unneeded_html_tags(html: str):
+def clean_unneeded_html_tags(html: str) -> str:
     """Clean unneeded optional html tags.
 
     >>> clean_unneeded_html_tags('a<body></img></td>b</th></tr></hr></br>c')
@@ -90,7 +90,7 @@ def clean_unneeded_html_tags(html: str):
     return html  # May look silly but Emmet does this and is wrong.
 
 
-def remove_html_comments(html: str):
+def remove_html_comments(html: str) -> str:
     """Remove all HTML comments, Keep all for Grunt, Grymt and IE.
 
     >>> _="<!-- build:dev -->a<!-- endbuild -->b<!--[if IE 7]>c<![endif]--> "
@@ -100,7 +100,7 @@ def remove_html_comments(html: str):
     return re.compile(r"<!-- .*? -->", re.I).sub("", html)
 
 
-def unquote_html_attributes(html: str):
+def unquote_html_attributes(html: str) -> str:
     """Remove all HTML quotes on attibutes if possible.
 
     >>> unquote_html_attributes('<img   width="9" height="5" data-foo="0"  >')
@@ -137,7 +137,7 @@ def unquote_html_attributes(html: str):
     return html.strip()
 
 
-def html_minify(html: str, comments: bool = Optional[bool]):
+def html_minify(html: str, comments: bool = Optional[bool]) -> str:
     """Minify HTML main function.
 
     >>> html_minify(' <p  width="9" height="5"  > <!-- a --> b </p> c <br> ')
