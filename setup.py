@@ -13,7 +13,7 @@ packages = [
 
 package_data = {"": ["*"]}
 
-install_requires = ["Brotli", "Django==3", "minify-html>=0.6.10,<0.7.0"]
+install_requires = ["Brotli", "django>=3.1.13", "minify-html>=0.6.10,<0.7.0"]
 
 setup_kwargs = setup(
     name="django-strip-whitespace",
