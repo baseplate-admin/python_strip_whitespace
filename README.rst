@@ -67,12 +67,12 @@ Then include it in your django project::
 
     MIDDLEWARE = [
         ...
-        "strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.HTMLStripWhiteSpace",
+        "strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.html_strip_whitespace",
     ]
 
 Or if you like::
 
-    MIDDLEWARE += "strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.HTMLStripWhiteSpace"
+    MIDDLEWARE += "strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.html_strip_whitespace"
 
 
 Contributing :
