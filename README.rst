@@ -1,13 +1,20 @@
 HTML Whitespace remover for Django
 ==================================
-|Pepy.tech Badge| |PyPi Version Badge|
+|Pepy.tech Badge| |PyPi Version Badge| |Python Versions Badge| |License Badge|
 
 .. |Pepy.tech Badge| image:: https://static.pepy.tech/personalized-badge/django-strip-whitespace?period=month&units=international_system&left_color=grey&right_color=orange&left_text=Downloads
    :target: https://pepy.tech/project/django-strip-whitespace
 
 .. |PyPi Version Badge| image:: https://badge.fury.io/py/django-strip-whitespace.svg
     :target: https://badge.fury.io/py/django-strip-whitespace
-    
+
+.. |Python Versions Badge| image:: https://img.shields.io/pypi/pyversions/django-strip-whitespace
+    :alt: PyPI - Python Version
+    :target: https://github.com/baseplate-admin/django_strip_whitespace/blob/main/setup.py
+
+.. |License Badge| image:: https://img.shields.io/pypi/l/django-strip-whitespace
+   :alt: PyPI - License
+   :target: https://github.com/baseplate-admin/django_strip_whitespace/blob/main/LICENSE
 Introduction :
 --------------
 A powerful tool to optimize HTML
