@@ -1,5 +1,9 @@
 HTML Whitespace remover for Django
 ==================================
+|Pepy.tech Badge|
+
+.. |Pepy.tech Badge| image:: https://pepy.tech/badge/django-strip-whitespace
+   :target: https://pepy.tech/project/django-strip-whitespace
 
 Introduction :
 --------------
