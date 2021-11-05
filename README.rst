@@ -33,25 +33,27 @@ Why souldn't you use django_stip_whitespace ?
 
 *   This Module expects that you write js with line breaks. 
 
-So for example if you have a file like this::
+So for example if you have a file like this:
+   .. code-block:: html
 
-    <div x-init="
-            () => {
-                console.log('Hello World')
-                console.log("Hello World Again") // This will cause error because theres no ;
-            }
-        "
-    > </div>
+       <div x-init="
+               () => {
+                   console.log('Hello World')
+                   console.log("Hello World Again") // This will cause error because theres no ;
+               }
+           "
+       > </div>
 
 The resulted HTML will have an error and AlpineJS won't init.
 
 *   Disables the use of &nbsp; in HTML. Although this can be easily mitigated by using CSS pesudo element. 
 
-Use this::
-    
-    selector::before { 
-        content : '\00a0\00a0'
-    }
+Use this:
+    .. code-block:: css
+       
+       selector::before { 
+           content : '\00a0\00a0'
+       }
     
 
 Requirements :
@@ -70,23 +72,27 @@ Installation :
 
 Install with pip from pypi::
 
-    python -m pip install django_stip_whitespace
+      $ python -m pip install django_stip_whitespace
 
 Install with pip from github ( Development )::
     
-    python -m pip install https://codeload.github.com/baseplate-admin/django_strip_whitespace/zip/refs/heads/main
+      $ python -m pip install https://codeload.github.com/baseplate-admin/django_strip_whitespace/zip/refs/heads/main
 
 
-Then include it in your django project::
+Then include it in your django project:
+   
+   .. code-block:: python
+   
+       MIDDLEWARE = [
+           ...
+           "strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.html_strip_whitespace",
+       ]
 
-    MIDDLEWARE = [
-        ...
-        "strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.html_strip_whitespace",
-    ]
-
-Or if you like::
-
-    MIDDLEWARE += "strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.html_strip_whitespace"
+Or if you like:
+   
+   .. code-block:: python
+   
+         MIDDLEWARE += "strip_whitespace.middlewares.HtmlStripWhiteSpaceMiddleware.html_strip_whitespace"
 
 
 Contributing :
