@@ -97,7 +97,7 @@ Or if you like:
 
 Contributing :
 ==============
-If you like this project add a star. 
+If you like this project add a star. If you have problems or suggestions please put them in the `Issue Tracker <https://github.com/baseplate-admin/django_strip_whitespace/issues>`_.
 
 
 Roadmap :
