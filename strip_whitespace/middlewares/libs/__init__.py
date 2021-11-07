@@ -1,1 +1,1 @@
-from .compress_html import minify as minify_html
+from .html import html_minify as minify_html
