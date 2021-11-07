@@ -15,6 +15,7 @@ HTML Whitespace remover for Django
 .. |License Badge| image:: https://img.shields.io/pypi/l/django-strip-whitespace
    :alt: PyPI - License
    :target: https://github.com/baseplate-admin/django_strip_whitespace/blob/main/LICENSE
+
 Introduction :
 --------------
 A powerful tool to optimize HTML
