@@ -27,7 +27,7 @@ Why use "django_stip_whitespace" ?
 *   Its mostly based on C ( gzip ) and Rust ( minify-html : https://pypi.org/project/minify-html/ ) libraries
 *   Can be used with 'django.middleware.gzip.GZipMiddleware'
 *   It can automagically minify inline CSS, JS.
-*   Significantly lower bytes transferred ( 246kb > 16kb ) when working with frameworks like AlpineJs and TailwindCSS 
+*   Significantly lower bytes transferred ( 246kb > 16kb ) when working with frameworks like AlpineJs.
 
 Why souldn't you use django_stip_whitespace ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
