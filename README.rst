@@ -32,7 +32,7 @@ Why use "django_stip_whitespace" ?
 Why souldn't you use django_stip_whitespace ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*   This Module expects that you write js with line breaks. 
+*   This Module expects that you write inline js with line breaks. 
 
 So for example if you have a file like this:
    .. code-block:: html
