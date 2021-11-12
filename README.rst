@@ -47,6 +47,17 @@ So for example if you have a file like this:
 
 The resulted HTML will have an error and AlpineJS won't init.
 
+The Proper way to write:
+   .. code-block:: html
+        
+        <div x-init="
+               () => {
+                   console.log('Hello World');
+                   console.log("Hello World Again"); // This will work just fine
+               }
+           "
+       > </div>
+
 *   Disables the use of &nbsp; in HTML. Although this can be easily mitigated by using CSS pesudo element. 
 
 Use this:
