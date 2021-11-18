@@ -71,7 +71,7 @@ Use this:
 Requirements :
 --------------
 
-*    Brotli
+*    Brotli (or BrotliPy)
 *    minify-html
 *    Django > 3 ( Should work with version 2? )
 *    Python 3 ( Should work with all version? )
