@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = ">=3"
+django = "*"
 Brotli = "*"
 minify-html = "*"
 
@@ -15,7 +15,7 @@ readme-renderer = '*'
 
 
 [requires]
-python_version = "3.9"
+python_version = "3.10"
 
 [pipenv]
 allow_prereleases = true

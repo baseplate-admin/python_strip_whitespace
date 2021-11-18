@@ -7,6 +7,7 @@ from .compressors import *
 # Decompressors
 from .decompressors import *
 
+# Guess the file content
 from ._guess_content_type import guess
 
 
