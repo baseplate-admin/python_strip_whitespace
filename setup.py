@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import find_packages, setup
 import pathlib
 
 here = pathlib.Path(__file__).parent.resolve()
@@ -14,9 +14,15 @@ packages = [
     "strip_whitespace.middlewares.libs.html",
 ]
 
+
 package_data = {"": ["*"]}
 
-install_requires = ["Brotli", "django>=3.1.13", "minify-html"]
+install_requires = [
+    "Brotli; implementation_name != 'PyPy'",
+    "brotlipy; implementation_name == 'PyPy'",
+    "django>3",
+    "minify-html",
+]
 
 setup_kwargs = setup(
     name="django-strip-whitespace",
@@ -32,7 +38,7 @@ setup_kwargs = setup(
     packages=packages,
     package_data=package_data,
     install_requires=install_requires,
-    python_requires=">=3.6,<4.0",
+    python_requires=">=3.6,<3.10",
     license="GPLv3",
     platforms="any",
     classifiers=[
@@ -48,4 +54,3 @@ setup_kwargs = setup(
         "Programming Language :: Python :: 3.10",
     ],
 )
-

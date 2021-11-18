@@ -116,5 +116,4 @@ Roadmap :
 =========
 *    Add line break to InlineJS
 *    Add ZStandard Compression ? ( Should Work )
-*    Add PyPy support
 *    Do not remove '&nbsp;' from html
