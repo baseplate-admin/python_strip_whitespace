@@ -1,9 +1,10 @@
-from setuptools import find_packages, setup
 import pathlib
+from setuptools import setup
 
-here = pathlib.Path(__file__).parent.resolve()
 
-long_description = (here / "README.rst").read_text(encoding="utf-8")
+long_description = (pathlib.Path(__file__).parent.resolve() / "README.rst").read_text(
+    encoding="utf-8"
+)
 
 packages = [
     "strip_whitespace",
@@ -26,7 +27,7 @@ install_requires = [
 
 setup_kwargs = setup(
     name="django-strip-whitespace",
-    version="0.0.12",
+    version="0.0.13",
     description="A powerful HTML whitespace remover",
     long_description=long_description,
     author="baseplate-admin",
@@ -38,7 +39,7 @@ setup_kwargs = setup(
     packages=packages,
     package_data=package_data,
     install_requires=install_requires,
-    python_requires=">=3.6,<3.10",
+    python_requires=">=3.6",
     license="GPLv3",
     platforms="any",
     classifiers=[
