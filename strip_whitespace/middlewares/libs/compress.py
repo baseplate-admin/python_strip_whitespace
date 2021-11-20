@@ -1,6 +1,11 @@
 # Minifiers
 from minify_html import minify as rust_minifier
-from .html import html_minify as python_minifier
+
+from .html import (
+    html_minify as python_minifier,
+    mangle_nbsp,
+    unmangle_nbsp,
+)
 
 # Compressors
 from .functions.compressors import *
@@ -30,8 +35,10 @@ def minify(buffer: bytes) -> str:
     elif buffer_type == "plain":
         decompressed_buffer = buffer
 
-    first_iter = rust_minifier(
-        decompressed_buffer.decode(),
+    first_iter = mangle_nbsp(decompressed_buffer.decode())
+
+    second_iter = rust_minifier(
+        first_iter,
         do_not_minify_doctype=STRIP_WHITESPACE_DO_NOT_MINIFY_DOCTYPE,
         ensure_spec_compliant_unquoted_attribute_values=STRIP_WHITESPACE_ENSURE_SPEC_CONPLIANT_UNQUOTED_ATTRIBUTE_VALUES,
         keep_closing_tags=STRIP_WHITESPACE_KEEP_CLOSING_TAGS,
@@ -44,9 +51,10 @@ def minify(buffer: bytes) -> str:
         remove_processing_instructions=STRIP_WHITESPACE_REMOVE_PROCESSING_INSTRUCTIONS,
     )
 
-    second_iter = add_line_break(first_iter)
+    third_iter = add_line_break(second_iter)
+    fourth_iter = python_minifier(third_iter)
 
-    last_iter = python_minifier(second_iter)
+    last_iter = unmangle_nbsp(fourth_iter)
     last_iter = last_iter.encode()
 
     if buffer_type == "gz":
