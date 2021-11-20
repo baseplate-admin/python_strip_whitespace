@@ -21,7 +21,7 @@ packages = [
 package_data = {"": ["*"]}
 
 install_requires = [
-    "Brotli; implementation_name != 'PyPy'",
+    "Brotli; implementation_name == 'cpython'",
     "brotlipy; implementation_name == 'PyPy'",
     "django>3",
     "minify-html",
@@ -48,13 +48,13 @@ setup_kwargs = setup(
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
-        "Topic :: Internet :: WWW/HTTP :: WSGI :: Middleware",
-        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Programming Language :: Python :: 3 :: Only ",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Topic :: Internet :: WWW/HTTP :: WSGI :: Middleware",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     ],
 )
