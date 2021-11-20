@@ -23,6 +23,7 @@ A powerful tool to optimize HTML
 Why use "django_stip_whitespace" ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+*   Adds line break to InlineJS.
 *   It can automagically minify inline CSS, JS.
 *   Removes <!--prettier-ignore--> from HTML.
 *   It speeds up website by reducing the HTML size.
@@ -128,6 +129,4 @@ Roadmap :
 *    Do not remove '&nbsp;' from html
 
 
-Done :
-======
-*    Add line break to InlineJS
+
