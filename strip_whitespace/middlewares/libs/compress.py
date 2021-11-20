@@ -7,11 +7,6 @@ from .html import (
     unmangle_nbsp,
 )
 
-# Compressors
-from .functions.compressors import *
-
-# Decompressors
-from .functions.decompressors import *
 
 # Guess the file content
 from .functions import guess
@@ -29,9 +24,20 @@ def minify(buffer: bytes) -> str:
     return_buffer: bytes = b""
 
     if buffer_type == "gz":
+        from .functions.decompressors import gz_decompress
+
         decompressed_buffer = gz_decompress(buffer)
+
     elif buffer_type == "br":
+        from .functions.decompressors import br_decompress
+
         decompressed_buffer = br_decompress(buffer)
+
+    elif buffer_type == "zstd":
+        from .functions.decompressors import zstd_decompress
+
+        decompressed_buffer = zstd_decompress(buffer)
+
     elif buffer_type == "plain":
         decompressed_buffer = buffer
 
@@ -57,10 +63,22 @@ def minify(buffer: bytes) -> str:
     last_iter = unmangle_nbsp(fourth_iter)
     last_iter = last_iter.encode()
 
+    # Decompress
     if buffer_type == "gz":
+        from .functions.compressors import gz_compress
+
         return_buffer = gz_compress(last_iter)
+
     elif buffer_type == "br":
+        from .functions.compressors import br_compress
+
         return_buffer = br_compress(last_iter)
+
+    elif buffer_type == "zstd":
+        from .functions.compressors import zstd_compress
+
+        return_buffer = zstd_compress(last_iter)
+
     elif buffer_type == "plain":
         return_buffer = last_iter
 
