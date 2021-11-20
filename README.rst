@@ -2,7 +2,7 @@ HTML Whitespace remover for Django
 ==================================
 |Pepy.tech Badge| |PyPi Version Badge| |Python Versions Badge| |License Badge|
 
-.. |Pepy.tech Badge| image:: https://static.pepy.tech/personalized-badge/django-strip-whitespace?period=month&units=international_system&left_color=grey&right_color=orange&left_text=Downloads
+.. |Pepy.tech Badge| image:: https://static.pepy.tech/personalized-badge/django-strip-whitespace?period=week&units=international_system&left_color=grey&right_color=orange&left_text=Downloads
    :target: https://pepy.tech/project/django-strip-whitespace
 
 .. |PyPi Version Badge| image:: https://badge.fury.io/py/django-strip-whitespace.svg
@@ -23,8 +23,8 @@ A powerful tool to optimize HTML
 Why use "django_stip_whitespace" ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*   Removes <!--prettier-ignore--> from HTML.
 *   It can automagically minify inline CSS, JS.
+*   Removes <!--prettier-ignore--> from HTML.
 *   It speeds up website by reducing the HTML size.
 *   Can be used with 'django.middleware.gzip.GZipMiddleware'.
 *   Its mostly based on C ( gzip ) and Rust ( `minify-html <https://pypi.org/project/minify-html/>`__  ) libraries.
