@@ -139,15 +139,12 @@ def unquote_html_attributes(html: str) -> str:
     return html.strip()
 
 
-def html_minify(html: str, comments: bool = Optional[bool]) -> str:
+def html_minify(html: str, comments: bool = Optional[bool] == False) -> str:
     """Minify HTML main function.
 
     >>> html_minify(' <p  width="9" height="5"  > <!-- a --> b </p> c <br> ')
     '<p width=9 height=5 > b c <br>'
     """
-    if not comments:
-        comments = False
-
     html = remove_html_comments(html) if not comments else html
     html = condense_style(html)
     html = condense_script(html)

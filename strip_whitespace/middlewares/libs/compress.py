@@ -1,5 +1,6 @@
-from .html import html_minify as py_minifier
-from minify_html import minify as rs_minifier
+# Minifiers
+from minify_html import minify as rust_minifier
+from .html import html_minify as python_minifier
 
 # Compressors
 from .compressors import *
@@ -8,7 +9,10 @@ from .compressors import *
 from .decompressors import *
 
 # Guess the file content
-from ._guess_content_type import guess
+from .content import guess
+
+# Import bindings
+from .variables import *
 
 
 def minify(buffer: bytes) -> str:
@@ -23,16 +27,20 @@ def minify(buffer: bytes) -> str:
     elif buffer_type == "plain":
         decompressed_buffer = buffer
 
-    first_iter = rs_minifier(
+    first_iter = rust_minifier(
         decompressed_buffer.decode(),
-        minify_js=True,
-        minify_css=True,
-        do_not_minify_doctype=True,
-        keep_html_and_head_opening_tags=True,
-        # keep_closing_tags=True,
-        remove_processing_instructions=True,
+        do_not_minify_doctype=STRIP_WHITESPACE_DO_NOT_MINIFY_DOCTYPE,
+        ensure_spec_compliant_unquoted_attribute_values=STRIP_WHITESPACE_ENSURE_SPEC_CONPLIANT_UNQUOTED_ATTRIBUTE_VALUES,
+        keep_closing_tags=STRIP_WHITESPACE_KEEP_CLOSING_TAGS,
+        keep_comments=STRIP_WHITESPACE_KEEP_COMMENTS,
+        keep_html_and_head_opening_tags=STRIP_WHITESPACE_KEEP_HTML_AND_HEAD_OPENING_TAGS,
+        keep_spaces_between_attributes=STRIP_WHITESPACE_KEEP_SPACES_BETWEEN_ATTRIBUTES,
+        minify_css=STRIP_WHITESPACE_MINIFY_CSS,
+        minify_js=STRIP_WHITESPACE_MINIFY_JS,
+        remove_bangs=STRIP_WHITESPACE_REMOVE_BANGS,
+        remove_processing_instructions=STRIP_WHITESPACE_REMOVE_PROCESSING_INSTRUCTIONS,
     )
-    last_iter = py_minifier(first_iter, comments=False)
+    last_iter = python_minifier(first_iter)
     last_iter = last_iter.encode()
 
     if buffer_type == "gz":
