@@ -30,7 +30,7 @@ install_requires = [
 
 setup_kwargs = setup(
     name="django-strip-whitespace",
-    version="0.1.3",
+    version="0.0.17",
     description="A powerful HTML whitespace remover",
     long_description=long_description,
     author="baseplate-admin",
