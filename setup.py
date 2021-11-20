@@ -20,10 +20,15 @@ packages = [
 
 
 package_data = {"": ["*"]}
+extras_require = {
+    "brotli": [
+        "Brotli; implementation_name == 'cpython'",
+        "brotlipy; implementation_name == 'PyPy'",
+    ],
+    "zstd": ["zstd"],
+}
 
 install_requires = [
-    "Brotli; implementation_name == 'cpython'",
-    "brotlipy; implementation_name == 'PyPy'",
     "django>3",
     "minify-html",
 ]
@@ -42,6 +47,7 @@ setup_kwargs = setup(
     packages=packages,
     package_data=package_data,
     install_requires=install_requires,
+    extras_require=extras_require,
     # zip_safe=False,
     python_requires=">=3.7, <3.11",
     license="GPLv3",

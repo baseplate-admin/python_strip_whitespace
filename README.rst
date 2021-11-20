@@ -43,10 +43,11 @@ Why souldn't you use django_stip_whitespace ?
 Requirements :
 --------------
 
-*    Brotli ( or BrotliPy )
 *    minify-html
 *    Django > 3 ( Should work with version 2? )
 *    Python 3 ( Should work with all version? )
+*    Brotli ( or BrotliPy ) | ( Optional )
+*    ZSTD ( Optional ) 
 
 User guide :
 ============
@@ -118,4 +119,4 @@ If you like to add features. Fork this repo and submit a Pull Request. 😛
 
 Roadmap :
 =========
-*    Add ZStandard Compression ? ( Should Work )
+You tell me. If i have free time, I will implement it.
