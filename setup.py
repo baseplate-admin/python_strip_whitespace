@@ -41,7 +41,8 @@ setup_kwargs = setup(
     packages=packages,
     package_data=package_data,
     install_requires=install_requires,
-    python_requires=">=3.6",
+    # zip_safe=False,
+    python_requires=">=3.6, <3.11",
     license="GPLv3",
     platforms="any",
     classifiers=[
