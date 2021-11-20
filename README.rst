@@ -62,13 +62,15 @@ Install with pip from pypi (No extra dependencies)::
 
       $ python -m pip install django_strip_whitespace
 
-Install with pip with Brotli support ::
+Install with pip with Brotli support::
 
       $ python -m pip install django_strip_whitespace[brotli]
 
-Same but with Zstandard support ::
+Same but with Zstandard support::
 
       $ python -m pip install django_strip_whitespace[zstd]
+
+
 
 
 Install with pip from github ( Development | Not Recommended for Production )::
