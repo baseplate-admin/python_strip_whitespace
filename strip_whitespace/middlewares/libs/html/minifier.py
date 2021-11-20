@@ -139,7 +139,7 @@ def unquote_html_attributes(html: str) -> str:
     return html.strip()
 
 
-def html_minify(html: str, comments: bool = Optional[bool] == False) -> str:
+def html_minify(html: str, comments: Optional[bool] == False) -> str:
     """Minify HTML main function.
 
     >>> html_minify(' <p  width="9" height="5"  > <!-- a --> b </p> c <br> ')
