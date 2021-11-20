@@ -36,15 +36,7 @@ Why use "django_stip_whitespace" ?
 Why souldn't you use django_stip_whitespace ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *   Adds unnecessary ';;' in HTML. ( If you know any regex to fix this please put a pull request )
-*   Disables the use of &nbsp; in HTML. Although this can be easily mitigated by using CSS pesudo element. 
 
-    Use this CSS code:
-        .. code-block:: css
-            
-            selector::before { 
-                content : '\00a0\00a0'
-            }
-    
 *   Although I tried my best to use Compiled Language for Optimizations. It can still be sub miliseconds slower compared to normal Django Rendering.
 
 
@@ -127,7 +119,6 @@ If you like to add features. Fork this repo and submit a Pull Request. 😛
 Roadmap :
 =========
 *    Add ZStandard Compression ? ( Should Work )
-*    Do not remove '&nbsp;' from html
 
 
 
