@@ -10,11 +10,11 @@ packages = [
     "strip_whitespace",
     "strip_whitespace.middlewares",
     "strip_whitespace.middlewares.libs",
-    "strip_whitespace.middlewares.libs.html",
-    "strip_whitespace.middlewares.libs.content",
-    "strip_whitespace.middlewares.libs.variables",
-    "strip_whitespace.middlewares.libs.compressors",
-    "strip_whitespace.middlewares.libs.decompressors",
+    "strip_whitespace.middlewares.libs.functions",
+    "strip_whitespace.middlewares.libs.functions.regex_patterns",
+    "strip_whitespace.middlewares.libs.functions.rust_variables",
+    "strip_whitespace.middlewares.libs.functions.compressors",
+    "strip_whitespace.middlewares.libs.functions.decompressors",
 ]
 
 
@@ -29,7 +29,7 @@ install_requires = [
 
 setup_kwargs = setup(
     name="django-strip-whitespace",
-    version="0.0.16",
+    version="0.1.0",
     description="A powerful HTML whitespace remover",
     long_description=long_description,
     author="baseplate-admin",

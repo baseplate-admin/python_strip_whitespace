@@ -34,32 +34,6 @@ Why use "django_stip_whitespace" ?
 Why souldn't you use django_stip_whitespace ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*   This Module expects that you write inline js with line breaks. 
-
-So for example if you have a file like this:
-   .. code-block:: html
-
-       <div x-init="
-               () => {
-                   console.log('Hello World')
-                   console.log("Hello World Again") // This will cause error because theres no ';' to break the line
-               }
-           "
-       > </div>
-
-The resulted HTML will have an error and AlpineJS won't init. 
-
-The Proper way to write:
-   .. code-block:: html
-        
-        <div x-init="
-               () => {
-                   console.log('Hello World');
-                   console.log("Hello World Again"); // This will work just fine
-               }
-           "
-       > </div>
-
 *   Disables the use of &nbsp; in HTML. Although this can be easily mitigated by using CSS pesudo element. 
 
 Use this CSS code:
@@ -150,6 +124,10 @@ If you like to add features. Fork this repo and submit a Pull Request. 😛
 
 Roadmap :
 =========
-*    Add line break to InlineJS
 *    Add ZStandard Compression ? ( Should Work )
 *    Do not remove '&nbsp;' from html
+
+
+Done :
+======
+*    Add line break to InlineJS
