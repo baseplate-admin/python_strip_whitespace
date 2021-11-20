@@ -23,8 +23,8 @@ A powerful tool to optimize HTML
 Why use "django_stip_whitespace" ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*   Removes <!--prettier-ignore--> from HTML.
 *   It can automagically minify inline CSS, JS.
+*   Removes <!--prettier-ignore--> from HTML.
 *   It speeds up website by reducing the HTML size.
 *   Can be used with 'django.middleware.gzip.GZipMiddleware'.
 *   Its mostly based on C ( gzip ) and Rust ( `minify-html <https://pypi.org/project/minify-html/>`__  ) libraries.
