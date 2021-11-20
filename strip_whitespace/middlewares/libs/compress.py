@@ -30,10 +30,8 @@ def minify(buffer: bytes) -> str:
     elif buffer_type == "plain":
         decompressed_buffer = buffer
 
-    first_iter = add_line_break(decompressed_buffer.decode())
-
-    second_iter = rust_minifier(
-        first_iter,
+    first_iter = rust_minifier(
+        decompressed_buffer.decode(),
         do_not_minify_doctype=STRIP_WHITESPACE_DO_NOT_MINIFY_DOCTYPE,
         ensure_spec_compliant_unquoted_attribute_values=STRIP_WHITESPACE_ENSURE_SPEC_CONPLIANT_UNQUOTED_ATTRIBUTE_VALUES,
         keep_closing_tags=STRIP_WHITESPACE_KEEP_CLOSING_TAGS,
@@ -45,6 +43,9 @@ def minify(buffer: bytes) -> str:
         remove_bangs=STRIP_WHITESPACE_REMOVE_BANGS,
         remove_processing_instructions=STRIP_WHITESPACE_REMOVE_PROCESSING_INSTRUCTIONS,
     )
+
+    second_iter = add_line_break(first_iter)
+
     last_iter = python_minifier(second_iter)
     last_iter = last_iter.encode()
 
