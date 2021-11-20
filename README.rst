@@ -84,7 +84,7 @@ Installation :
 
 Install with pip from pypi::
 
-      $ python -m pip install django_stip_whitespace
+      $ python -m pip install django_strip_whitespace
 
 Install with pip from github ( Development )::
     
