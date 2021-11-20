@@ -37,14 +37,14 @@ Why souldn't you use django_stip_whitespace ?
 
 *   Disables the use of &nbsp; in HTML. Although this can be easily mitigated by using CSS pesudo element. 
 
-Use this CSS code:
-    .. code-block:: css
-       
-       selector::before { 
-           content : '\00a0\00a0'
-       }
-    
-*   Although I tried my best to use Compiled Language for Optimizations.It can still be sub miliseconds slower compared to normal Django Rendering.
+    Use this CSS code:
+        .. code-block:: css
+        
+        selector::before { 
+            content : '\00a0\00a0'
+        }
+        
+*   Although I tried my best to use Compiled Language for Optimizations. It can still be sub miliseconds slower compared to normal Django Rendering.
 
 
 Requirements :
