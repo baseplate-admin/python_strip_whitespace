@@ -2,8 +2,12 @@ import re
 
 
 def mangle_nbsp(html: str) -> str:
-    return re.sub("&nbsp;", "mangled_nbsp", html)
+    # Using a foreign character so there's 0 chance of messing up the translation.
+    html = html.replace("&nbsp;", "অ")
+    return html
 
 
 def unmangle_nbsp(html: str) -> str:
-    return re.sub("mangled_nbsp", "&nbsp;", html)
+    # Using a foreign character so there's 0 chance of messing up the translation.
+    html = html.replace("অ", "&nbsp;")
+    return html
