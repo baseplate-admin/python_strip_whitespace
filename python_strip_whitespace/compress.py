@@ -44,24 +44,6 @@ def minify(
     decompressed_buffer: str = ""
     return_buffer: bytes = b""
 
-    if buffer_type == "gz":
-        from .functions.decompressors import gz_decompress
-
-        decompressed_buffer = gz_decompress(buffer)
-
-    elif buffer_type == "br":
-        from .functions.decompressors import br_decompress
-
-        decompressed_buffer = br_decompress(buffer)
-
-    elif buffer_type == "zstd":
-        from .functions.decompressors import zstd_decompress
-
-        decompressed_buffer = zstd_decompress(buffer)
-
-    elif buffer_type == "plain":
-        decompressed_buffer = buffer
-
     #   First change the &nbsp; into a special character so the other compressors cant minify that.
     first_iter = mangle_nbsp(
         decompressed_buffer.decode(),
@@ -106,25 +88,7 @@ def minify(
         fourth_iter,
         STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER,
     )
+    
     last_iter = last_iter.encode()
-
-    # Decompress
-    if buffer_type == "gz":
-        from .functions.compressors import gz_compress
-
-        return_buffer = gz_compress(last_iter)
-
-    elif buffer_type == "br":
-        from .functions.compressors import br_compress
-
-        return_buffer = br_compress(last_iter)
-
-    elif buffer_type == "zstd":
-        from .functions.compressors import zstd_compress
-
-        return_buffer = zstd_compress(last_iter)
-
-    elif buffer_type == "plain":
-        return_buffer = last_iter
 
     return return_buffer

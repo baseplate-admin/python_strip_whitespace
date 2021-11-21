@@ -10,9 +10,8 @@ packages = [
     "python_strip_whitespace",
     "python_strip_whitespace.html",
     "python_strip_whitespace.functions",
-
-    "python_strip_whitespace.functions.compressors",
-    "python_strip_whitespace.functions.decompressors",
+    #    "python_strip_whitespace.functions.compressors",
+    #   "python_strip_whitespace.functions.decompressors",
     "python_strip_whitespace.functions.regex_patterns",
 ]
 
