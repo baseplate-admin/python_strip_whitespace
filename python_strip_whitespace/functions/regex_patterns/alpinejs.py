@@ -1,11 +1,13 @@
 import re
 
 # X Pattern
+
 X_INIT_PATTERN = re.compile(r"(?<=x-init=[\"\`])([^[\"\`\]]+)")
 X_EFFECT_PATTERN = re.compile(r"(?<=x-effect=[\"\`])([^[\"\`\]]+)")
 
 # Click Related Pattern.
 # Mapped from => https://alpinejs.dev/directives/on#window
+
 CLICK_PATTERN = re.compile(r"(?<=click=[\"\`])([^[\"\`\]]+)")
 CLICK_PREVENT_PATTERN = re.compile(r"(?<=[click.prevent]=[\"\`])([^[\"\`\]]+)")
 CLICK_STOP_PATTERN = re.compile(r"(?<=[click.stop]=[\"\`])([^[\"\`\]]+)")
@@ -22,6 +24,7 @@ CLICK_PASSIVE_PATTERN = re.compile(r"(?<=[click.passive]=[\"\`])([^[\"\`\]]+)")
 
 # Mouse movement Pattern
 # Mapped from => https://www.w3schools.com/jsref/obj_mouseevent.asp
+
 MOUSE_ENTER_PATTERN = re.compile(r"(?<=mouseenter=[\"\`])([^[\"\`\]]+)")
 MOUSE_LEAVE_PATTERN = re.compile(r"(?<=mouseleave=[\"\`])([^[\"\`\]]+)")
 # MOUSE_CONTEXT_MENU_PATTERN = re.compile(r"(?<=mousecontextmenu=[\"\`])([^[\"\`\]]+)")
