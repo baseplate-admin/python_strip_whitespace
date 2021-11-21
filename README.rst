@@ -133,30 +133,30 @@ Change Ignored Paths :
 
 This module allows dynamic ignored path allocation. So for example if your sitemap.xml is at url '/sitemap.xml' and you want to avoid minifying it ( Because this module in lower level is meant to minify HTML not XML ). Then you can add it to ignored path. ( By default it ignores '/sitemap.xml' ) 
 
-    To customize ignored path:
+To customize ignored path:
 
-        .. code-block:: python
-            
-            # settings.py
+    .. code-block:: python
+        
+        # settings.py
 
-            STRIP_WHITESPACE_MINIFY_IGNORED_PATHS.append("/robots.txt") # Note that STRIP_WHITESPACE_MINIFY_IGNORED_PATHS is a Python List
+        STRIP_WHITESPACE_MINIFY_IGNORED_PATHS.append("/robots.txt") # Note that STRIP_WHITESPACE_MINIFY_IGNORED_PATHS is a Python List
 
 Change NBSP Mangle Character :
 ------------------------------
 
 This module first replaces the &nbsp; character from html with a character. For example &nbsp; becomes 'অ' ( I picked 'অ' because its a foreign character and not many sites use 'অ' ). If for some reason this character is causing problem in your HTML. You can change this from settings.py .
 
-    To change &nbsp; mangle character:
+To change &nbsp; mangle character:
 
-        .. code-block:: python
+    .. code-block:: python
 
-            # settings.py
+        # settings.py
 
-            # Keep the string as  short as possible.
-            # If you make it long,
-            # the python str.replace() method will use more CPU and RAM thus slowing your site down.
-            
-            STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER = 'ga' # Note that STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER is a python string
+        # Keep the string as  short as possible.
+        # If you make it long,
+        # the python str.replace() method will use more CPU and RAM thus slowing your site down.
+        
+        STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER = 'ga' # Note that STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER is a python string
 
 
 Contributing :
