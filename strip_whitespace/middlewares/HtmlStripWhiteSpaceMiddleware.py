@@ -5,9 +5,11 @@ This module strips unnecessary whitespaces from HTML.
 
 import asyncio
 from typing import List
-from .libs import minify_html
-from django.utils.decorators import sync_and_async_middleware
 
+from .libs import minify_html
+
+from django.conf import settings
+from django.utils.decorators import sync_and_async_middleware
 
 from django.http.request import HttpRequest
 from django.http.response import HttpResponse
@@ -15,11 +17,16 @@ from django.http.response import HttpResponse
 
 @sync_and_async_middleware
 def html_strip_whitespace(get_response):
-
     # One-time configuration and initialization goes here.
-    ignored_paths: List = [
-        "/sitemap.xml"  # Ignore Sitemap.xml because our code mangles with it.
-    ]
+
+    ignored_paths: List = getattr(
+        settings,
+        "STRIP_WHITESPACE_MINIFY_IGNORED_PATHS",
+        [
+            "/sitemap.xml",
+        ],  # Ignore Sitemap.xml because our code mangles with it.
+    )
+
     if asyncio.iscoroutinefunction(get_response):
 
         async def middleware(request: HttpRequest):
