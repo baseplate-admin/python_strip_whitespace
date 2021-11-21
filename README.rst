@@ -47,7 +47,6 @@ Requirements :
 --------------
 
 *    minify-html
-*    python-dotenv
 *    Python 3 ( Should work with all version? )
 *    Brotli ( or BrotliPy ) | ( Optional )
 *    ZSTD ( Optional ) 
