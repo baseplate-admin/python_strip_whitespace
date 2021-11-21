@@ -12,10 +12,10 @@ packages = [
     "strip_whitespace.middlewares.libs",
     "strip_whitespace.middlewares.libs.html",
     "strip_whitespace.middlewares.libs.functions",
+    "strip_whitespace.middlewares.libs.functions.variables",
     "strip_whitespace.middlewares.libs.functions.compressors",
     "strip_whitespace.middlewares.libs.functions.decompressors",
     "strip_whitespace.middlewares.libs.functions.regex_patterns",
-    "strip_whitespace.middlewares.libs.functions.rust_variables",
 ]
 
 

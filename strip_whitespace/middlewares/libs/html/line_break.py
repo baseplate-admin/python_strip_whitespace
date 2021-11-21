@@ -7,6 +7,7 @@ from ..functions.regex_patterns import *
 
 
 def add_line_break(html: str) -> str:
+    # X pattern
     html = replace_regex(X_INIT_PATTERN, html)
     html = replace_regex(X_EFFECT_PATTERN, html)
 

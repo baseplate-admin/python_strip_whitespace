@@ -7,6 +7,7 @@ import asyncio
 from typing import List
 
 from .libs import minify_html
+from .libs.functions.variables import STRIP_WHITESPACE_MINIFY_IGNORED_PATHS
 
 from django.conf import settings
 from django.utils.decorators import sync_and_async_middleware
@@ -19,14 +20,7 @@ from django.http.response import HttpResponse
 def html_strip_whitespace(get_response):
     # One-time configuration and initialization goes here.
 
-    ignored_paths: List = getattr(
-        settings,
-        "STRIP_WHITESPACE_MINIFY_IGNORED_PATHS",
-        [
-            "/sitemap.xml",
-        ],  # Ignore Sitemap.xml because our code mangles with it.
-    )
-
+    ignored_paths: List = STRIP_WHITESPACE_MINIFY_IGNORED_PATHS
     if asyncio.iscoroutinefunction(get_response):
 
         async def middleware(request: HttpRequest):

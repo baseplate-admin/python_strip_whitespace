@@ -30,10 +30,11 @@ Why use "django_stip_whitespace" ?
 *   It can automagically minify inline CSS, JS.
 *   Removes <!--prettier-ignore--> from HTML.
 *   It speeds up website by reducing the HTML size.
+*   It compiles regex at runtime. So it's blazing fast.
 *   Can be used with 'django.middleware.gzip.GZipMiddleware'.
 *   Its mostly based on C ( gzip ) and Rust ( `minify-html <https://pypi.org/project/minify-html/>`__  ) libraries.
-*   Is very customizable. ( You can configure lower level `minify-html <https://github.com/wilsonzlin/minify-html/blob/master/python/src/lib.template.rs/>`_ rust bindings from settings.py )
 *   Significantly lower bytes transferred when working with frameworks like AlpineJs ( Almost fully working & Please open a issue in the `Issue Tracker <https://github.com/baseplate-admin/django_strip_whitespace/issues>`__ if you encounter any bug) & Petite Vue.
+*   Is very customizable. ( You can configure lower level `minify-html <https://github.com/wilsonzlin/minify-html/blob/master/python/src/lib.template.rs/>`_ rust bindings and also the lower level `python < https://github.com/juancarlospaco/css-html-js-minify/blob/master/css_html_js_minify/html_minifier.py/>`_ bindings from settings.py )
 
 
 Why souldn't you use django_stip_whitespace ?
@@ -99,25 +100,28 @@ Customization :
 Change Lower Level Bindings :
 -----------------------------
 
-The module allows settings to be changed from Django's settings.py file. If you would like to change any settings, refer to `minify-html's <https://github.com/wilsonzlin/minify-html/blob/master/python/src/lib.template.rs/>`_ source code.
+Rust :
+~~~~~~
+
+The module allows `rust <https://github.com/wilsonzlin/minify-html>`_ minifier options to be changed from Django's settings.py file. If you would like to change any settings, refer to `minify-html's <https://github.com/wilsonzlin/minify-html/blob/master/python/src/lib.template.rs/>`_ source code.
 
 
 The bindings are ( by default set to True ):
 
     .. code-block:: python
 
-        STRIP_WHITESPACE_DO_NOT_MINIFY_DOCTYPE, # passes do_not_minify_doctype to minify-html
-        STRIP_WHITESPACE_ENSURE_SPEC_CONPLIANT_UNQUOTED_ATTRIBUTE_VALUES, # passes ensure_spec_compliant_unquoted_attribute_values to minify-html
-        STRIP_WHITESPACE_KEEP_CLOSING_TAGS, # passes keep_closing_tags to minify-html
-        STRIP_WHITESPACE_KEEP_COMMENTS, # passes keep_comments to minify-html
-        STRIP_WHITESPACE_KEEP_HTML_AND_HEAD_OPENING_TAGS, # passes keep_html_and_head_opening_tags to minify-html
-        STRIP_WHITESPACE_KEEP_SPACES_BETWEEN_ATTRIBUTES, # passes keep_spaces_between_attributes to minify-html
-        STRIP_WHITESPACE_MINIFY_CSS, # passes minify_css to minify-html
-        STRIP_WHITESPACE_MINIFY_JS, # passes minify_js to minify-html
-        STRIP_WHITESPACE_REMOVE_BANGS, # passes remove_bangs to minify-html
-        STRIP_WHITESPACE_REMOVE_PROCESSING_INSTRUCTIONS, # passes remove_processing_instructions to minify-html
+        STRIP_WHITESPACE_RUST_DO_NOT_MINIFY_DOCTYPE, # passes do_not_minify_doctype to minify-html
+        STRIP_WHITESPACE_RUST_ENSURE_SPEC_CONPLIANT_UNQUOTED_ATTRIBUTE_VALUES, # passes ensure_spec_compliant_unquoted_attribute_values to minify-html
+        STRIP_WHITESPACE_RUST_KEEP_CLOSING_TAGS, # passes keep_closing_tags to minify-html
+        STRIP_WHITESPACE_RUST_KEEP_COMMENTS, # passes keep_comments to minify-html
+        STRIP_WHITESPACE_RUST_KEEP_HTML_AND_HEAD_OPENING_TAGS, # passes keep_html_and_head_opening_tags to minify-html
+        STRIP_WHITESPACE_RUST_KEEP_SPACES_BETWEEN_ATTRIBUTES, # passes keep_spaces_between_attributes to minify-html
+        STRIP_WHITESPACE_RUST_MINIFY_CSS, # passes minify_css to minify-html
+        STRIP_WHITESPACE_RUST_MINIFY_JS, # passes minify_js to minify-html
+        STRIP_WHITESPACE_RUST_REMOVE_BANGS, # passes remove_bangs to minify-html
+        STRIP_WHITESPACE_RUST_REMOVE_PROCESSING_INSTRUCTIONS, # passes remove_processing_instructions to minify-html
 
-If you would like to change any of the above variables, simply put them in settings.py. Please note that every variable here is a python boolean.
+If you would like to change any of the above variables, simply put them in settings.py ( Please note that every variable here is a python boolean ).
 
 For example:
 
@@ -125,8 +129,34 @@ For example:
 
         # settings.py
 
-        STRIP_WHITESPACE_DO_NOT_MINIFY_DOCTYPE = False
+        STRIP_WHITESPACE_RUST_DO_NOT_MINIFY_DOCTYPE = False
 
+Python :
+~~~~~~~~
+
+The module allows python minifier options to be changed from Django's settings.py file. If you would like to change any settings, refer to `python-module's <https://github.com/juancarlospaco/css-html-js-minify/blob/master/css_html_js_minify/html_minifier.py/>`_ source code.
+
+The bindings are ( by default set to a sane value ):
+
+    .. code-block:: python
+
+        STRIP_WHITESPACE_PYTHON_REMOVE_COMMENTS, # False | removes comments from HTML using python ( not recommended cause rust can do that just fine and fast )
+        STRIP_WHITESPACE_PYTHON_CONDENSE_STYLE_FROM_HTML, # True | replaces '<style text/css>' -> '<style>'
+        STRIP_WHITESPACE_PYTHON_CONDENSE_SCRIPT_FROM_HTML, # True | replaces '<script text/javascript>' -> '<script>'
+        STRIP_WHITESPACE_PYTHON_CLEAN_UNNEEDED_HTML_TAGS, # True | removes some unnecessary tags
+        STRIP_WHITESPACE_PYTHON_CONDENSE_HTML_WHITESPACE, # True | This is where the magic happens.
+        STRIP_WHITESPACE_PYTHON_UNQUOTE_HTML_ATTRIBUTES, # True | This is also a magic module.
+       
+
+If you would like to change any of the above variables, simply put them in settings.py ( Please note that every variable here is a python boolean )
+
+For example:
+
+    .. code-block:: python
+
+        # settings.py
+
+        STRIP_WHITESPACE_PYTHON_REMOVE_COMMENTS = True 
 
 Change Ignored Paths :
 ----------------------
