@@ -102,7 +102,7 @@ Change Lower Level Bindings :
 The module allows settings to be changed from Django's settings.py file. If you would like to change any settings, refer to `minify-html's <https://github.com/wilsonzlin/minify-html/blob/master/python/src/lib.template.rs/>`_ source code.
 
 
-The bindings are ( by default set to True):
+The bindings are ( by default set to True ):
 
     .. code-block:: python
 
@@ -131,7 +131,9 @@ For example:
 Change Ignored Paths :
 ----------------------
 
-This module allows dynamic ignored path allocation. So for example if your sitemap.xml is at url '/sitemap.xml' and you want to avoid minifying it ( Because this module in lower level is meant to minify HTML not XML ). Then you can add it to ignored path. ( By default it ignores '/sitemap.xml' ) 
+This module allows dynamic ignored path allocation.
+So for example if your sitemap.xml is at url '/sitemap.xml' and you want to avoid minifying it ( Because this module in lower level is meant to minify HTML not XML ).
+Then you can add it to ignored path. ( By default it ignores '/sitemap.xml' ) 
 
 To customize ignored path:
 
@@ -144,7 +146,9 @@ To customize ignored path:
 Change NBSP Mangle Character :
 ------------------------------
 
-This module first replaces the &nbsp; character from html with a character. For example &nbsp; becomes 'অ' ( I picked 'অ' because its a foreign character and not many sites use 'অ' ). If for some reason this character is causing problem in your HTML. You can change this from settings.py .
+This module first replaces the &nbsp; character from html with a character. 
+For example &nbsp; becomes 'অ' ( I picked 'অ' because its a foreign character and not many sites use the character like this 'অ' ).
+If for some reason this character is causing problem in your HTML. You can change this from settings.py .
 
 To change &nbsp; mangle character:
 
