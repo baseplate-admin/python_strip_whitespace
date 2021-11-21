@@ -7,19 +7,17 @@ long_description = (pathlib.Path(__file__).parent.resolve() / "README.rst").read
 )
 
 packages = [
-    "strip_whitespace",
-    "strip_whitespace.middlewares",
-    "strip_whitespace.middlewares.libs",
-    "strip_whitespace.middlewares.libs.html",
-    "strip_whitespace.middlewares.libs.functions",
-    "strip_whitespace.middlewares.libs.functions.variables",
-    "strip_whitespace.middlewares.libs.functions.compressors",
-    "strip_whitespace.middlewares.libs.functions.decompressors",
-    "strip_whitespace.middlewares.libs.functions.regex_patterns",
+    "python_strip_whitespace",
+    "python_strip_whitespace.html",
+    "python_strip_whitespace.functions",
+    "python_strip_whitespace.functions.variables",
+    "python_strip_whitespace.functions.compressors",
+    "python_strip_whitespace.functions.decompressors",
+    "python_strip_whitespace.functions.regex_patterns",
 ]
 
 
-package_data = {"": ["*"]}
+package_data = {"": ["python_strip_whitespace/*"]}
 extras_require = {
     "brotli": [
         "Brotli; implementation_name == 'cpython'",
@@ -34,8 +32,8 @@ install_requires = [
 ]
 
 setup_kwargs = setup(
-    name="django-strip-whitespace",
-    version="0.0.21",
+    name="python-strip-whitespace",
+    version="0.0.1",
     description="A powerful HTML whitespace remover",
     long_description=long_description,
     author="baseplate-admin",
@@ -43,7 +41,7 @@ setup_kwargs = setup(
     # 'maintainer': 'baseplate-admin',
     # 'maintainer_email': None,
     keywords="django alpinejs middleware",
-    url="https://github.com/baseplate-admin/django_strip_whitespace",
+    url="https://github.com/baseplate-admin/python_strip_whitespace",
     packages=packages,
     package_data=package_data,
     install_requires=install_requires,
