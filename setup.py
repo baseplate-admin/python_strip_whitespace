@@ -27,20 +27,19 @@ extras_require = {
 }
 
 install_requires = [
-    "django>3",
     "minify-html",
 ]
 
 setup_kwargs = setup(
     name="python-strip-whitespace",
-    version="0.0.1",
-    description="A powerful HTML whitespace remover",
+    version="0.0.2",
+    description="A powerful HTML whitespace remover for python",
     long_description=long_description,
     author="baseplate-admin",
     author_email="zarifahanf@outlook.com",
     # 'maintainer': 'baseplate-admin',
     # 'maintainer_email': None,
-    keywords="django alpinejs middleware",
+    keywords="python3 alpinejs html5 js css",
     url="https://github.com/baseplate-admin/python_strip_whitespace",
     packages=packages,
     package_data=package_data,
