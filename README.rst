@@ -96,67 +96,67 @@ Or if you like:
 Customization :
 ===============
 
-    Change Lower Level Bindings :
-    -----------------------------
+Change Lower Level Bindings :
+-----------------------------
 
-    The module allows settings to be changed from Django's settings.py file. If you would like to change any settings, refer to `minify-html's <https://github.com/wilsonzlin/minify-html/blob/master/python/src/lib.template.rs/>`_ source code.
+The module allows settings to be changed from Django's settings.py file. If you would like to change any settings, refer to `minify-html's <https://github.com/wilsonzlin/minify-html/blob/master/python/src/lib.template.rs/>`_ source code.
 
 
-    The bindings are ( by default set to True):
+The bindings are ( by default set to True):
+
+    .. code-block:: python
+
+        STRIP_WHITESPACE_DO_NOT_MINIFY_DOCTYPE, # passes do_not_minify_doctype to minify-html
+        STRIP_WHITESPACE_ENSURE_SPEC_CONPLIANT_UNQUOTED_ATTRIBUTE_VALUES, # passes ensure_spec_compliant_unquoted_attribute_values to minify-html
+        STRIP_WHITESPACE_KEEP_CLOSING_TAGS, # passes keep_closing_tags to minify-html
+        STRIP_WHITESPACE_KEEP_COMMENTS, # passes keep_comments to minify-html
+        STRIP_WHITESPACE_KEEP_HTML_AND_HEAD_OPENING_TAGS, # passes keep_html_and_head_opening_tags to minify-html
+        STRIP_WHITESPACE_KEEP_SPACES_BETWEEN_ATTRIBUTES, # passes keep_spaces_between_attributes to minify-html
+        STRIP_WHITESPACE_MINIFY_CSS, # passes minify_css to minify-html
+        STRIP_WHITESPACE_MINIFY_JS, # passes minify_js to minify-html
+        STRIP_WHITESPACE_REMOVE_BANGS, # passes remove_bangs to minify-html
+        STRIP_WHITESPACE_REMOVE_PROCESSING_INSTRUCTIONS, # passes remove_processing_instructions to minify-html
+
+If you would like to change any of the above variables, simply put them in settings.py. Please note that every variable here is a python boolean.
+
+For example:
+
+    .. code-block:: python
+
+        # settings.py
+
+        STRIP_WHITESPACE_DO_NOT_MINIFY_DOCTYPE = False
+
+
+Change Ignored Paths :
+----------------------
+
+This module allows dynamic ignored path allocation. So for example if your sitemap.xml is at url '/sitemap.xml' and you want to avoid minifying it ( Because this module in lower level is meant to minify HTML not XML ). Then you can add it to ignored path. ( By default it ignores '/sitemap.xml' ) 
+
+    To customize ignored path:
 
         .. code-block:: python
+            
+            # settings.py
 
-            STRIP_WHITESPACE_DO_NOT_MINIFY_DOCTYPE, # passes do_not_minify_doctype to minify-html
-            STRIP_WHITESPACE_ENSURE_SPEC_CONPLIANT_UNQUOTED_ATTRIBUTE_VALUES, # passes ensure_spec_compliant_unquoted_attribute_values to minify-html
-            STRIP_WHITESPACE_KEEP_CLOSING_TAGS, # passes keep_closing_tags to minify-html
-            STRIP_WHITESPACE_KEEP_COMMENTS, # passes keep_comments to minify-html
-            STRIP_WHITESPACE_KEEP_HTML_AND_HEAD_OPENING_TAGS, # passes keep_html_and_head_opening_tags to minify-html
-            STRIP_WHITESPACE_KEEP_SPACES_BETWEEN_ATTRIBUTES, # passes keep_spaces_between_attributes to minify-html
-            STRIP_WHITESPACE_MINIFY_CSS, # passes minify_css to minify-html
-            STRIP_WHITESPACE_MINIFY_JS, # passes minify_js to minify-html
-            STRIP_WHITESPACE_REMOVE_BANGS, # passes remove_bangs to minify-html
-            STRIP_WHITESPACE_REMOVE_PROCESSING_INSTRUCTIONS, # passes remove_processing_instructions to minify-html
+            STRIP_WHITESPACE_MINIFY_IGNORED_PATHS.append("/robots.txt") # Note that STRIP_WHITESPACE_MINIFY_IGNORED_PATHS is a Python List
 
-    If you would like to change any of the above variables, simply put them in settings.py. Please note that every variable here is a python boolean.
+Change NBSP Mangle Character :
+------------------------------
 
-    For example:
+This module first replaces the &nbsp; character from html with a character. For example &nbsp; becomes 'অ' ( I picked 'অ' because its a foreign character and not many sites use 'অ' ). If for some reason this character is causing problem in your HTML. You can change this from settings.py .
+
+    To change &nbsp; mangle character:
 
         .. code-block:: python
 
             # settings.py
 
-            STRIP_WHITESPACE_DO_NOT_MINIFY_DOCTYPE = False
-
-
-    Change Ignored Paths :
-    ----------------------
-
-    This module allows dynamic ignored path allocation. So for example if your sitemap.xml is at url '/sitemap.xml' and you want to avoid minifying it ( Because this module in lower level is meant to minify HTML not XML ). Then you can add it to ignored path. ( By default it ignores '/sitemap.xml' ) 
-
-        To customize ignored path:
-
-            .. code-block:: python
-                
-                # settings.py
-
-                STRIP_WHITESPACE_MINIFY_IGNORED_PATHS.append("/robots.txt") # Note that STRIP_WHITESPACE_MINIFY_IGNORED_PATHS is a Python List
-
-    Change NBSP Mangle Character :
-    ------------------------------
-
-    This module first replaces the &nbsp; character from html with a character. For example &nbsp; becomes 'অ' ( I picked 'অ' because its a foreign character and not many sites use 'অ' ). If for some reason this character is causing problem in your HTML. You can change this from settings.py .
-
-        To change &nbsp; mangle character:
-
-            .. code-block:: python
-
-                # settings.py
-
-                # Keep the string as  short as possible.
-                # If you make it long,
-                # the python str.replace() method will use more CPU and RAM thus slowing your site down.
-                
-                STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER = 'ga' # Note that STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER is a python string
+            # Keep the string as  short as possible.
+            # If you make it long,
+            # the python str.replace() method will use more CPU and RAM thus slowing your site down.
+            
+            STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER = 'ga' # Note that STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER is a python string
 
 
 Contributing :
