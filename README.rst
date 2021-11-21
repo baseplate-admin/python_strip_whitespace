@@ -51,14 +51,15 @@ Requirements :
 *    Brotli ( or BrotliPy ) | ( Optional )
 *    ZSTD ( Optional ) 
 
-User guide :
-============
-
+Used Internally by :
+====================
+*     `django-strip-whitespace <https://github.com/baseplate-admin/django_strip_whitespace>`_
+*     `flask-strip-whitespace <https://github.com/baseplate-admin/flask_strip_whitespace>`_
 
 Contributing :
 ==============
 If you like this project add a star. 
-If you have problems or suggestions please put them in the `Issue Tracker <https://github.com/baseplate-admin/django_strip_whitespace/issues>`__.
+If you have problems or suggestions please put them in the `Issue Tracker <https://github.com/baseplate-admin/python_strip_whitespace/issues>`__.
 If you like to add features. Fork this repo and submit a Pull Request. 😛
 
 Roadmap :
