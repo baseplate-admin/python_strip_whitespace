@@ -40,8 +40,6 @@ Why souldn't you use python_stip_whitespace ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *   Adds unnecessary ';;' in HTML. ( If you know any regex to fix this please put a pull request )
 
-*   Although I tried my best to use Compiled Language for Optimizations. It can still be sub miliseconds ( > 0.001 ) slower compared to normal Django Rendering. ( If you know any way to improve performance, please put a pull request )
-
 
 Requirements :
 --------------
