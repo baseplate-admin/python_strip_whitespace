@@ -10,7 +10,7 @@ packages = [
     "python_strip_whitespace",
     "python_strip_whitespace.html",
     "python_strip_whitespace.functions",
-    "python_strip_whitespace.functions.variables",
+
     "python_strip_whitespace.functions.compressors",
     "python_strip_whitespace.functions.decompressors",
     "python_strip_whitespace.functions.regex_patterns",
@@ -32,7 +32,7 @@ install_requires = [
 
 setup_kwargs = setup(
     name="python-strip-whitespace",
-    version="0.0.2",
+    version="0.0.3",
     description="A powerful HTML whitespace remover for python",
     long_description=long_description,
     author="baseplate-admin",
