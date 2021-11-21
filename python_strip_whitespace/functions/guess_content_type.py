@@ -9,7 +9,7 @@ def guess(buffer: bytes) -> Union[str("BR"), str("GZ"), str("ZSTD"), str("PLAIN"
             return "GZ"
         elif buffer[0:3] == b"\x1b\xf5\x01":
             return "BR"
-        elif buffer[0:3] == b'\x28\xb5\x2f':
+        elif buffer[0:3] == b"\x28\xb5\x2f":
             return "ZSTD"
         else:
             return "PLAIN"
