@@ -1,5 +1,5 @@
 # Minifiers
-from typing import Optional
+from typing import Optional, Union
 from minify_html import minify as rust_minifier
 
 from .html import (
@@ -37,30 +37,39 @@ def minify(
     STRIP_WHITESPACE_PYTHON_CLEAN_UNNEEDED_HTML_TAGS: Optional[bool] = True,
     STRIP_WHITESPACE_PYTHON_CONDENSE_HTML_WHITESPACE: Optional[bool] = True,
     STRIP_WHITESPACE_PYTHON_UNQUOTE_HTML_ATTRIBUTES: Optional[bool] = True,
-    # NBSP char
+    # NBSP character setting
     STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER: Optional[str] = "'অ'",
+    # Compression Settings
+    STRIP_WHITESPACE_COMPRESSION_TYPE: Union[
+        str("compressed"), str("decompressed")
+    ] = str("decompressed"),
 ) -> str:
-    buffer_type: str = guess(buffer).lower()
+    buffer_type: Union[str("gz"), str("br"), str("zstd"), str("plain")]
     decompressed_buffer: str = ""
     return_buffer: bytes = b""
 
-    if buffer_type == "gz":
+    # We check if the HTML that the server sent us is compressed or decompressed.
+    # If the string is decompressed then just set buffer type to plain
+    if STRIP_WHITESPACE_COMPRESSION_TYPE == str("compressed"):
+        buffer_type = guess(buffer).lower()
+    elif STRIP_WHITESPACE_COMPRESSION_TYPE == str("decompressed"):
+        buffer_type = "plain"
+
+    # If the buffer is not plain text, check for compression type.
+    if buffer_type == "plain":
+        decompressed_buffer = buffer
+    elif buffer_type == "gz":
         from .functions.decompressors import gz_decompress
 
         decompressed_buffer = gz_decompress(buffer)
-
     elif buffer_type == "br":
         from .functions.decompressors import br_decompress
 
         decompressed_buffer = br_decompress(buffer)
-
     elif buffer_type == "zstd":
         from .functions.decompressors import zstd_decompress
 
         decompressed_buffer = zstd_decompress(buffer)
-
-    elif buffer_type == "plain":
-        decompressed_buffer = buffer
 
     #   First change the &nbsp; into a special character so the other compressors cant minify that.
     first_iter = mangle_nbsp(
@@ -108,8 +117,11 @@ def minify(
     )
     last_iter = last_iter.encode()
 
-    # Decompress
-    if buffer_type == "gz":
+    # Compress the buffer
+    if buffer_type == "plain":
+        return_buffer = last_iter
+
+    elif buffer_type == "gz":
         from .functions.compressors import gz_compress
 
         return_buffer = gz_compress(last_iter)
@@ -123,8 +135,5 @@ def minify(
         from .functions.compressors import zstd_compress
 
         return_buffer = zstd_compress(last_iter)
-
-    elif buffer_type == "plain":
-        return_buffer = last_iter
 
     return return_buffer
