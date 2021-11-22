@@ -42,7 +42,9 @@ def minify(
     # Compression Settings
     STRIP_WHITESPACE_COMPRESSION_TYPE: Union[
         str("compressed"), str("decompressed")
-    ] = str("decompressed"),
+    ] = str(
+        "decompressed"  # Lets default to decompressed bytes
+    ),
 ) -> str:
     buffer_type: Union[str("gz"), str("br"), str("zstd"), str("plain")]
     decompressed_buffer: str = ""
@@ -56,6 +58,7 @@ def minify(
         buffer_type = "plain"
 
     # If the buffer is not plain text, check for compression type.
+    # But if the buffer is just plain text, don't do unnecessary checks.
     if buffer_type == "plain":
         decompressed_buffer = buffer
     elif buffer_type == "gz":
@@ -72,13 +75,13 @@ def minify(
         decompressed_buffer = zstd_decompress(buffer)
 
     #   First change the &nbsp; into a special character so the other compressors cant minify that.
-    first_iter = mangle_nbsp(
+    first_iter: str = mangle_nbsp(
         decompressed_buffer.decode(),
         STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER,
     )
 
     #   Rust based minifier. The most powerful one in here. 💪
-    second_iter = rust_minifier(
+    second_iter: str = rust_minifier(
         first_iter,
         do_not_minify_doctype=STRIP_WHITESPACE_RUST_DO_NOT_MINIFY_DOCTYPE,
         ensure_spec_compliant_unquoted_attribute_values=STRIP_WHITESPACE_RUST_ENSURE_SPEC_CONPLIANT_UNQUOTED_ATTRIBUTE_VALUES,
@@ -95,12 +98,12 @@ def minify(
     #   Rust minifier comes first to migrate some of the issues I faced.😛
     #   Specially the python module picks '\n in class=""
     #   So first remove all unnecessary whitespace before adding line_break
-    third_iter = add_line_break(second_iter)
+    third_iter: str = add_line_break(second_iter)
 
     #   Finally the python iterator.
     #   I don't know how this works.🤷
     #   So adding it at last
-    fourth_iter = python_minifier(
+    fourth_iter: str = python_minifier(
         third_iter,
         STRIP_WHITESPACE_PYTHON_REMOVE_COMMENTS,
         STRIP_WHITESPACE_PYTHON_CONDENSE_STYLE_FROM_HTML,
@@ -111,11 +114,11 @@ def minify(
     )
 
     #   Replace special character with &nbsp;
-    last_iter = unmangle_nbsp(
+    last_iter: str = unmangle_nbsp(
         fourth_iter,
         STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER,
     )
-    last_iter = last_iter.encode()
+    last_iter: bytes = last_iter.encode()
 
     # Compress the buffer
     if buffer_type == "plain":
