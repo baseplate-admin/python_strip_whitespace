@@ -47,7 +47,7 @@ def minify(
     ),
 ) -> str:
     buffer_type: Union[
-        str("gz"),
+        str("gzip"),
         str("br"),
         str("zstd"),
         str("plain"),
@@ -66,16 +66,16 @@ def minify(
     # But if the buffer is just plain text, don't do unnecessary checks.
     if buffer_type == "plain":
         decompressed_buffer = buffer
-    elif buffer_type == "gz":
-        from .functions.decompressors import gz_decompress
+    elif buffer_type == "gzip":
+        from .functions.decompressors.gzip import decompress as gz_decompress
 
         decompressed_buffer = gz_decompress(buffer)
     elif buffer_type == "br":
-        from .functions.decompressors import br_decompress
+        from .functions.decompressors.brotli import decompress as br_decompress
 
         decompressed_buffer = br_decompress(buffer)
     elif buffer_type == "zstd":
-        from .functions.decompressors import zstd_decompress
+        from .functions.decompressors.zstd import decompress as zstd_decompress
 
         decompressed_buffer = zstd_decompress(buffer)
 
@@ -129,18 +129,18 @@ def minify(
     if buffer_type == "plain":
         return_buffer = last_iter
 
-    elif buffer_type == "gz":
-        from .functions.compressors import gz_compress
+    elif buffer_type == "gzip":
+        from .functions.compressors.gzip import compress as gz_compress
 
         return_buffer = gz_compress(last_iter)
 
     elif buffer_type == "br":
-        from .functions.compressors import br_compress
+        from .functions.compressors.brotli import compress as br_compress
 
         return_buffer = br_compress(last_iter)
 
     elif buffer_type == "zstd":
-        from .functions.compressors import zstd_compress
+        from .functions.compressors.zstd import compress as zstd_compress
 
         return_buffer = zstd_compress(last_iter)
 

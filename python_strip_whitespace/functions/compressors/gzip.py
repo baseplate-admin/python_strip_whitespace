@@ -1,7 +1,7 @@
 import gzip
 
 
-def compress(string: str) -> bytes:
+def compress(string: bytes) -> bytes:
     try:
         return gzip.compress(string)
     except Exception as e:
