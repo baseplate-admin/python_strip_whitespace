@@ -46,7 +46,12 @@ def minify(
         "decompressed"  # Lets default to decompressed bytes
     ),
 ) -> str:
-    buffer_type: Union[str("gz"), str("br"), str("zstd"), str("plain")]
+    buffer_type: Union[
+        str("gz"),
+        str("br"),
+        str("zstd"),
+        str("plain"),
+    ]
     decompressed_buffer: str = ""
     return_buffer: bytes = b""
 
