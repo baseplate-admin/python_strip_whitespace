@@ -67,5 +67,4 @@ If you like to add features. Fork this repo and submit a Pull Request. 😛
 
 Roadmap :
 =========
-*   Add a variable to turn off compression check.
 You tell me. If i have free time, I will implement it.
