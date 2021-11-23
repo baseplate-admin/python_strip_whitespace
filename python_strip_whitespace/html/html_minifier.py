@@ -2,7 +2,7 @@
     HTML Minifier functions for CSS-HTML-JS-Minify.
         Source : https://github.com/juancarlospaco/css-html-js-minify/blob/master/css_html_js_minify/html_minifier.py
         License : https://github.com/juancarlospaco/css-html-js-minify/blob/master/LICENSE.gpl.txt
-        Rewritten By : Baseplate-Admin (https://github.com/baseplate-admin/)
+            Rewritten By : Baseplate-Admin (https://github.com/baseplate-admin/)
 """
 import re
 from typing import List
