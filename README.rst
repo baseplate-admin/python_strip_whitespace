@@ -56,8 +56,8 @@ Requirements :
 Used Internally by :
 ====================
 *     `django-strip-whitespace <https://github.com/baseplate-admin/django_strip_whitespace>`_ 
-*     `flask-strip-whitespace <https://github.com/baseplate-admin/flask_strip_whitespace>`_ ( Doesn't exist  😛 )
-*     `fastapi-strip-whitespace <https://github.com/baseplate-admin/fastapi_strip_whitespace>`_ ( Same here 😛 )
+*     `flask-strip-whitespace <https://github.com/baseplate-admin/flask_strip_whitespace>`_ 
+*     `fastapi-strip-whitespace <https://github.com/baseplate-admin/fastapi_strip_whitespace>`_ ( Doesn't exist  😛 )
 
 Contributing :
 ==============
