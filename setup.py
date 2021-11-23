@@ -31,7 +31,7 @@ install_requires = [
 
 setup_kwargs = setup(
     name="python-strip-whitespace",
-    version="0.0.4",
+    version="0.0.5",
     description="A powerful HTML whitespace remover for python",
     long_description=long_description,
     author="baseplate-admin",
