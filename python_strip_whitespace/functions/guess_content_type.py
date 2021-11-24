@@ -1,8 +1,4 @@
-import builtins
-from typing import Union
-
-
-def guess(buffer: bytes) -> Union[str("BR"), str("GZ"), str("ZSTD"), str("PLAIN")]:
+def guess(buffer: bytes) -> str("BR") or str("GZ") or str("ZSTD") or str("PLAIN"):
     """ """
     try:
         if buffer[0:3] == b"\x1f\x8b\x08":
@@ -13,7 +9,6 @@ def guess(buffer: bytes) -> Union[str("BR"), str("GZ"), str("ZSTD"), str("PLAIN"
             return "ZSTD"
         else:
             return "PLAIN"
-            # raise ValueError("Encoding not Gzip or Brotli")
 
     except Exception as e:
         raise e
