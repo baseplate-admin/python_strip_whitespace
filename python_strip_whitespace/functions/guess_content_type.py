@@ -1,4 +1,4 @@
-def guess(buffer: bytes) -> str("BR") or str("GZ") or str("ZSTD") or str("PLAIN"):
+def guess(buffer: bytes) -> str:
     """ """
     try:
         if buffer[0:3] == b"\x1f\x8b\x08":

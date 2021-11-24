@@ -40,19 +40,12 @@ def minify(
     # NBSP character setting
     STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER: Optional[str] = "'অ'",
     # Compression Settings
-    STRIP_WHITESPACE_COMPRESSION_TYPE: Union[
-        str("compressed"), str("decompressed")
-    ] = str(
+    STRIP_WHITESPACE_COMPRESSION_TYPE: str = str(
         "decompressed"  # Lets default to decompressed bytes
     ),
-) -> str:
-    buffer_type: Union[
-        str("gzip"),
-        str("br"),
-        str("zstd"),
-        str("plain"),
-    ]
-    decompressed_buffer: str = ""
+) -> bytes:
+    buffer_type:str
+    decompressed_buffer: bytes = b""
     return_buffer: bytes = b""
 
     # We check if the HTML that the server sent us is compressed or decompressed.
@@ -66,6 +59,7 @@ def minify(
     # But if the buffer is just plain text, don't do unnecessary checks.
     if buffer_type == "plain":
         decompressed_buffer = buffer
+    
     elif buffer_type == "gzip":
         from .functions.decompressors.gzip import decompress as gz_decompress
 
@@ -119,11 +113,11 @@ def minify(
     )
 
     #   Replace special character with &nbsp;
-    last_iter: str = unmangle_nbsp(
+    last_iter: bytes = unmangle_nbsp(
         fourth_iter,
         STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER,
-    )
-    last_iter: bytes = last_iter.encode()
+    ).encode()
+
 
     # Compress the buffer
     if buffer_type == "plain":

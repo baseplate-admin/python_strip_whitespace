@@ -5,7 +5,7 @@
             Rewritten By : Baseplate-Admin (https://github.com/baseplate-admin/)
 """
 import re
-from typing import List
+from typing import List, Optional
 
 
 def condense_html_whitespace(html: str) -> str:
@@ -159,12 +159,12 @@ def unquote_html_attributes(html: str) -> str:
 
 def html_minify(
     html: str,
-    STRIP_WHITESPACE_PYTHON_REMOVE_COMMENTS: bool,
-    STRIP_WHITESPACE_PYTHON_CONDENSE_STYLE_FROM_HTML: bool,
-    STRIP_WHITESPACE_PYTHON_CONDENSE_SCRIPT_FROM_HTML: bool,
-    STRIP_WHITESPACE_PYTHON_CLEAN_UNNEEDED_HTML_TAGS: bool,
-    STRIP_WHITESPACE_PYTHON_CONDENSE_HTML_WHITESPACE: bool,
-    STRIP_WHITESPACE_PYTHON_UNQUOTE_HTML_ATTRIBUTES: bool,
+    STRIP_WHITESPACE_PYTHON_REMOVE_COMMENTS: Optional[bool],
+    STRIP_WHITESPACE_PYTHON_CONDENSE_STYLE_FROM_HTML: Optional[bool],
+    STRIP_WHITESPACE_PYTHON_CONDENSE_SCRIPT_FROM_HTML: Optional[bool],
+    STRIP_WHITESPACE_PYTHON_CLEAN_UNNEEDED_HTML_TAGS: Optional[bool],
+    STRIP_WHITESPACE_PYTHON_CONDENSE_HTML_WHITESPACE: Optional[bool],
+    STRIP_WHITESPACE_PYTHON_UNQUOTE_HTML_ATTRIBUTES: Optional[bool],
 ) -> str:
     """Minify HTML main function.
 
