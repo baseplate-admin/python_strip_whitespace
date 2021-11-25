@@ -1,5 +1,5 @@
 # Minifiers
-from typing import Optional, Union
+import typing as t
 from minify_html import minify as rust_minifier
 
 from .html import (
@@ -18,32 +18,32 @@ from .html import add_line_break
 def minify(
     buffer: bytes,
     # Rust
-    STRIP_WHITESPACE_RUST_DO_NOT_MINIFY_DOCTYPE: Optional[bool] = True,
-    STRIP_WHITESPACE_RUST_ENSURE_SPEC_CONPLIANT_UNQUOTED_ATTRIBUTE_VALUES: Optional[
+    STRIP_WHITESPACE_RUST_DO_NOT_MINIFY_DOCTYPE: t.Optional[bool] = True,
+    STRIP_WHITESPACE_RUST_ENSURE_SPEC_CONPLIANT_UNQUOTED_ATTRIBUTE_VALUES: t.Optional[
         bool
     ] = True,
-    STRIP_WHITESPACE_RUST_KEEP_CLOSING_TAGS: Optional[bool] = True,
-    STRIP_WHITESPACE_RUST_KEEP_COMMENTS: Optional[bool] = True,
-    STRIP_WHITESPACE_RUST_KEEP_HTML_AND_HEAD_OPENING_TAGS: Optional[bool] = True,
-    STRIP_WHITESPACE_RUST_KEEP_SPACES_BETWEEN_ATTRIBUTES: Optional[bool] = True,
-    STRIP_WHITESPACE_RUST_MINIFY_CSS: Optional[bool] = True,
-    STRIP_WHITESPACE_RUST_MINIFY_JS: Optional[bool] = True,
-    STRIP_WHITESPACE_RUST_REMOVE_BANGS: Optional[bool] = True,
-    STRIP_WHITESPACE_RUST_REMOVE_PROCESSING_INSTRUCTIONS: Optional[bool] = True,
+    STRIP_WHITESPACE_RUST_KEEP_CLOSING_TAGS: t.Optional[bool] = True,
+    STRIP_WHITESPACE_RUST_KEEP_COMMENTS: t.Optional[bool] = True,
+    STRIP_WHITESPACE_RUST_KEEP_HTML_AND_HEAD_OPENING_TAGS: t.Optional[bool] = True,
+    STRIP_WHITESPACE_RUST_KEEP_SPACES_BETWEEN_ATTRIBUTES: t.Optional[bool] = True,
+    STRIP_WHITESPACE_RUST_MINIFY_CSS: t.Optional[bool] = True,
+    STRIP_WHITESPACE_RUST_MINIFY_JS: t.Optional[bool] = True,
+    STRIP_WHITESPACE_RUST_REMOVE_BANGS: t.Optional[bool] = True,
+    STRIP_WHITESPACE_RUST_REMOVE_PROCESSING_INSTRUCTIONS: t.Optional[bool] = True,
     # Python
-    STRIP_WHITESPACE_PYTHON_REMOVE_COMMENTS: Optional[bool] = False,
-    STRIP_WHITESPACE_PYTHON_CONDENSE_STYLE_FROM_HTML: Optional[bool] = True,
-    STRIP_WHITESPACE_PYTHON_CONDENSE_SCRIPT_FROM_HTML: Optional[bool] = True,
-    STRIP_WHITESPACE_PYTHON_CLEAN_UNNEEDED_HTML_TAGS: Optional[bool] = True,
-    STRIP_WHITESPACE_PYTHON_CONDENSE_HTML_WHITESPACE: Optional[bool] = True,
-    STRIP_WHITESPACE_PYTHON_UNQUOTE_HTML_ATTRIBUTES: Optional[bool] = True,
+    STRIP_WHITESPACE_PYTHON_REMOVE_COMMENTS: t.Optional[bool] = False,
+    STRIP_WHITESPACE_PYTHON_CONDENSE_STYLE_FROM_HTML: t.Optional[bool] = True,
+    STRIP_WHITESPACE_PYTHON_CONDENSE_SCRIPT_FROM_HTML: t.Optional[bool] = True,
+    STRIP_WHITESPACE_PYTHON_CLEAN_UNNEEDED_HTML_TAGS: t.Optional[bool] = True,
+    STRIP_WHITESPACE_PYTHON_CONDENSE_HTML_WHITESPACE: t.Optional[bool] = True,
+    STRIP_WHITESPACE_PYTHON_UNQUOTE_HTML_ATTRIBUTES: t.Optional[bool] = True,
     # NBSP character setting
-    STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER: Optional[str] = "'অ'",
+    STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER: t.Optional[str] = "'অ'",
     # Compression Settings
-    STRIP_WHITESPACE_COMPRESSION_TYPE: str = str(
+    STRIP_WHITESPACE_COMPRESSION_TYPE: t.Optional[str] = str(
         "decompressed"  # Lets default to decompressed bytes
     ),
-    STRIP_WHITESPACE_REGEX_FLAVOR: str = str(
+    STRIP_WHITESPACE_REGEX_FLAVOR: t.Optional[str] = str(
         "alpinejs"  # Lets default it to alpinejs.
     ),
 ) -> bytes:

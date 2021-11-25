@@ -5,7 +5,7 @@
             Rewritten By : Baseplate-Admin (https://github.com/baseplate-admin/)
 """
 import re
-from typing import List, Optional
+import typing as t
 
 
 def condense_html_whitespace(html: str) -> str:
@@ -14,9 +14,9 @@ def condense_html_whitespace(html: str) -> str:
     >>> condense_html_whitespace('<i>  <b>    <a> test </a>    </b> </i><br>')
     '<i><b><a> test </a></b></i><br>'
     """  # first space between tags, then empty new lines and in-between.
-    tagsStack: List = []
+    tagsStack: t.List = []
 
-    split: List = re.split(
+    split: t.List = re.split(
         "(<\\s*pre.*>|<\\s*/\\s*pre\\s*>|<\\s*textarea.*>|<\\s*/\\s*textarea\\s*>)",
         html,
         flags=re.IGNORECASE,
@@ -86,8 +86,8 @@ def condense_script(html: str) -> str:
 
 
 def clean_unneeded_html_tags(html: str) -> str:
-    """Clean unneeded optional html tags."""
-    tags_to_remove: List = [
+    """Clean unneeded t.Optional html tags."""
+    tags_to_remove: t.List = [
         "</area>",
         "</base>",
         "</col>",
@@ -159,12 +159,12 @@ def unquote_html_attributes(html: str) -> str:
 
 def html_minify(
     html: str,
-    STRIP_WHITESPACE_PYTHON_REMOVE_COMMENTS: Optional[bool],
-    STRIP_WHITESPACE_PYTHON_CONDENSE_STYLE_FROM_HTML: Optional[bool],
-    STRIP_WHITESPACE_PYTHON_CONDENSE_SCRIPT_FROM_HTML: Optional[bool],
-    STRIP_WHITESPACE_PYTHON_CLEAN_UNNEEDED_HTML_TAGS: Optional[bool],
-    STRIP_WHITESPACE_PYTHON_CONDENSE_HTML_WHITESPACE: Optional[bool],
-    STRIP_WHITESPACE_PYTHON_UNQUOTE_HTML_ATTRIBUTES: Optional[bool],
+    STRIP_WHITESPACE_PYTHON_REMOVE_COMMENTS: t.Optional[bool],
+    STRIP_WHITESPACE_PYTHON_CONDENSE_STYLE_FROM_HTML: t.Optional[bool],
+    STRIP_WHITESPACE_PYTHON_CONDENSE_SCRIPT_FROM_HTML: t.Optional[bool],
+    STRIP_WHITESPACE_PYTHON_CLEAN_UNNEEDED_HTML_TAGS: t.Optional[bool],
+    STRIP_WHITESPACE_PYTHON_CONDENSE_HTML_WHITESPACE: t.Optional[bool],
+    STRIP_WHITESPACE_PYTHON_UNQUOTE_HTML_ATTRIBUTES: t.Optional[bool],
 ) -> str:
     """Minify HTML main function.
 
