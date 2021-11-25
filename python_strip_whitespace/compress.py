@@ -43,23 +43,64 @@ def minify(
     STRIP_WHITESPACE_COMPRESSION_TYPE: str = str(
         "decompressed"  # Lets default to decompressed bytes
     ),
+    STRIP_WHITESPACE_REGEX_FLAVOR: str = str(
+        "alpinejs"  # Lets default it to alpinejs.
+    ),
 ) -> bytes:
-    buffer_type:str
+    #   Errors ⚠️
+    #   Checked here ✔️ | ❌
+
+    #   ❌ STRIP_WHITESPACE_COMPRESSION_TYPE is neither 'decompressed' nor 'compressed
+    if str(STRIP_WHITESPACE_COMPRESSION_TYPE) not in [
+        str("compressed"),
+        str("decompressed"),
+    ]:
+        raise ValueError(
+            f"""Error in python_strip_whitespace.compress
+
+                    STRIP_WHITESPACE_COMPRESSION_TYPE is neither 'decompressed' nor 'compressed.
+                    Please change the value when calling minify function.
+
+                        Current Value : { str(STRIP_WHITESPACE_COMPRESSION_TYPE) }
+                        It must be one of these :
+                            |> str('compressed')
+                            |> str('decompressed')"""
+        )
+    # ❌ STRIP_WHITESPACE_REGEX_FLAVOR is not defined in module
+    if str(STRIP_WHITESPACE_REGEX_FLAVOR) not in [
+        str("plain"),
+        str("alpinejs"),
+        str("petitevue"),
+    ]:
+        raise ValueError(
+            f"""Error in python_strip_whitespace.compress
+
+                STRIP_WHITESPACE_REGEX_FLAVOR is not defined.
+                Please change the value when calling minify function.
+
+                    Current Value : { str(STRIP_WHITESPACE_REGEX_FLAVOR) }
+                    It must be one of these :
+                        |>  str("plain")
+                        |>  str("alpinejs")
+                        |>  str("petitevue")"""
+        )
+
+    # Declare some variables here
     decompressed_buffer: bytes = b""
     return_buffer: bytes = b""
 
     # We check if the HTML that the server sent us is compressed or decompressed.
     # If the string is decompressed then just set buffer type to plain
     if STRIP_WHITESPACE_COMPRESSION_TYPE == str("compressed"):
-        buffer_type = guess(buffer).lower()
+        buffer_type: str = guess(buffer).lower()
     elif STRIP_WHITESPACE_COMPRESSION_TYPE == str("decompressed"):
-        buffer_type = "plain"
+        buffer_type: str = "plain"
 
     # If the buffer is not plain text, check for compression type.
     # But if the buffer is just plain text, don't do unnecessary checks.
     if buffer_type == "plain":
         decompressed_buffer = buffer
-    
+
     elif buffer_type == "gzip":
         from .functions.decompressors.gzip import decompress as gz_decompress
 
@@ -117,7 +158,6 @@ def minify(
         fourth_iter,
         STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER,
     ).encode()
-
 
     # Compress the buffer
     if buffer_type == "plain":
