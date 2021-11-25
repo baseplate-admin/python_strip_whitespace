@@ -114,7 +114,7 @@ def minify(
 
         decompressed_buffer = zstd_decompress(buffer)
 
-    #   First change the &nbsp; into a special character so the other compressors cant minify that.
+    #   First change the &nbsp; into a special character so the other compressors cant mangle with that.
     first_iter: str = mangle_nbsp(
         decompressed_buffer.decode(),
         STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER,
