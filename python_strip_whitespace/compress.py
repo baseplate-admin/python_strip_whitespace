@@ -1,5 +1,7 @@
 # Minifiers
 import typing as t
+
+# 3rd party
 from minify_html import minify as rust_minifier
 
 from .html import (
@@ -138,7 +140,7 @@ def minify(
     #   Rust minifier comes first to migrate some of the issues I faced.😛
     #   Specially the python module picks '\n in class=""
     #   So first remove all unnecessary whitespace before adding line_break
-    third_iter: str = add_line_break(second_iter)
+    third_iter: str = add_line_break(second_iter, STRIP_WHITESPACE_REGEX_FLAVOR)
 
     #   Finally the python iterator.
     #   I don't know how this works.🤷

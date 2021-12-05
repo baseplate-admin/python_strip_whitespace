@@ -1,5 +1,6 @@
+import minify_html
 import typing as t
-from re import findall,sub
+from re import findall
 
 from .regex_patterns import NEW_LINE_REPLACE_PATTERN
 
@@ -9,13 +10,16 @@ def replace_regex(RE_PATTERN: t.Pattern, html: str) -> str:
     replaced_regex_occurances: t.List = []
 
     for i in regex_occurances:
-        substituated_regex = sub(NEW_LINE_REPLACE_PATTERN, r";", i)
-        replaced_regex_occurances.append(substituated_regex)
+        minified_js = minify_html.minify(
+            i,
+            minify_js=True,
+        )
+        replaced_regex_occurances.append(minified_js)
 
-    for i in regex_occurances:
-        regex_index = regex_occurances.index(i)
-        replaced_regex_content = replaced_regex_occurances[regex_index]
+    for i in replaced_regex_occurances:
+        index = replaced_regex_occurances.index(i)
+        previous_content = regex_occurances[index]
 
-        html = html.replace(i, replaced_regex_content)
+        html = html.replace(previous_content, i)
 
     return html
