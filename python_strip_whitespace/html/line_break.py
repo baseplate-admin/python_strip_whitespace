@@ -59,21 +59,9 @@ def add_line_break(html: str, flavor: t.List) -> str:
         html = replace_regex(MOUSE_UP_PATTERN, html)
         html = replace_regex(MOUSE_MOVE_PATTERN, html)
 
-    elif "petitevue" in flavor:
+    if "petitevue" in flavor:
         # We'll implement it later.
         pass
-
-    elif "animejs" in flavor:
-        from ..functions.regex_patterns.animejs import ANIMEJS_REGEX_PATTERN
-        from re import findall
-
-        regex_occurances: t.List = findall(ANIMEJS_REGEX_PATTERN, html)
-
-        for i in regex_occurances:
-            replaced_value = f"""
-                ;{i};
-            """
-            html = html.replace(html, replaced_value)
 
     # else:
     #     raise ValueError(
