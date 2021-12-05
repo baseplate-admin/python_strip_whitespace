@@ -4,10 +4,24 @@ from re import findall
 
 from .regex_patterns import NEW_LINE_REPLACE_PATTERN
 
+JS_RESERVED_WORDS = [
+    "try",
+    "break",
+    "finally",
+    # "switch",
+    "typeof",
+    "while",
+]
+
 
 def replace_regex(RE_PATTERN: t.Pattern, html: str) -> str:
     regex_occurances: t.List = findall(RE_PATTERN, html)
     replaced_regex_occurances: t.List = []
+
+    for i in JS_RESERVED_WORDS:
+        word: str = str(i)
+        JS_RESERVED_WORDS.remove(word)
+        html = html.replace(word, f";{word}")
 
     for i in regex_occurances:
         minified_js = minify_html.minify(

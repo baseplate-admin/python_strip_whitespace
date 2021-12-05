@@ -45,9 +45,9 @@ def minify(
     STRIP_WHITESPACE_COMPRESSION_TYPE: t.Optional[str] = str(
         "decompressed"  # Lets default to decompressed bytes
     ),
-    STRIP_WHITESPACE_REGEX_FLAVOR: t.Optional[str] = str(
-        "alpinejs"  # Lets default it to alpinejs.
-    ),
+    STRIP_WHITESPACE_REGEX_FLAVOR: t.Optional[t.List] = [
+        # str("alpinejs")  # Lets default it to alpinejs.
+    ],
 ) -> bytes:
     #   Errors ⚠️
     #   Checked here ✔️ | ❌
