@@ -48,7 +48,7 @@ Why souldn't you use python_stip_whitespace ?
 Requirements :
 --------------
 
-*    minify-html
+*    _`minify-html <https://github.com/wilsonzlin/minify-html>`_
 *    Python 3 ( Should work with all version? )
 *    Brotli ( or BrotliPy ) | ( Optional )
 *    ZSTD ( Optional ) 
