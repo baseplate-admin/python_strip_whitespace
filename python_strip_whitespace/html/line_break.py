@@ -1,13 +1,15 @@
 """
 This module adds line break to html_files
+
 """
+from ..functions.regex import replace_regex
 
-import typing as t
 
+def add_line_break(html: str, flavor: str) -> str:
+    if flavor.lower() == "plain":
+        html = html
 
-def add_line_break(html: str, flavor: t.List) -> str:
-    if "alpinejs" in flavor:
-        from ..functions.regex import replace_regex
+    elif flavor.lower() == "alpinejs":
         from ..functions.regex_patterns.alpinejs import (
             # X pattern
             X_INIT_PATTERN,
@@ -59,19 +61,19 @@ def add_line_break(html: str, flavor: t.List) -> str:
         html = replace_regex(MOUSE_UP_PATTERN, html)
         html = replace_regex(MOUSE_MOVE_PATTERN, html)
 
-    if "petitevue" in flavor:
+    elif flavor.lower() == str("petitevue"):
         # We'll implement it later.
         pass
 
-    # else:
-    #     raise ValueError(
-    #         f"""Error in python_strip_whitespace.html.line_break.
-    #                 Current Flavor : { flavor }
-    #                 It must be one of these :
-    #                     |>  str("plain")
-    #                     |>  str("alpinejs")
-    #                     |>  str("petitevue")
-
-    #                 Please change the value when calling add_line_break()"""
-    #     )
+    else:
+        raise ValueError(
+            f"""Error in python_strip_whitespace.html.line_break.
+                    Current Flavor : { flavor }
+                    It must be one of these :
+                        |>  str("plain")
+                        |>  str("alpinejs")
+                        |>  str("petitevue")
+                    
+                    Please change the value when calling add_line_break()"""
+        )
     return html

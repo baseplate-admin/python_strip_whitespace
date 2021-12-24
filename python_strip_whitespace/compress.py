@@ -45,11 +45,9 @@ def minify(
     STRIP_WHITESPACE_COMPRESSION_TYPE: t.Optional[str] = str(
         "decompressed"  # Lets default to decompressed bytes
     ),
-    STRIP_WHITESPACE_REGEX_FLAVOR: t.Optional[t.List] = [
-        # str("alpinejs")  # Lets default it to alpinejs.
-        "animejs",
-        "alpinejs",
-    ],
+    STRIP_WHITESPACE_REGEX_FLAVOR: t.Optional[str] = str(
+        "alpinejs"  # Lets default it to alpinejs.
+    ),
 ) -> bytes:
     #   Errors ⚠️
     #   Checked here ✔️ | ❌
@@ -71,23 +69,23 @@ def minify(
                             |> str('decompressed')"""
         )
     # ❌ STRIP_WHITESPACE_REGEX_FLAVOR is not defined in module
-    # if str(STRIP_WHITESPACE_REGEX_FLAVOR) not in [
-    #     str("plain"),
-    #     str("alpinejs"),
-    #     str("petitevue"),
-    # ]:
-    #     raise ValueError(
-    #         f"""Error in python_strip_whitespace.compress
+    if str(STRIP_WHITESPACE_REGEX_FLAVOR) not in [
+        str("plain"),
+        str("alpinejs"),
+        str("petitevue"),
+    ]:
+        raise ValueError(
+            f"""Error in python_strip_whitespace.compress
 
-    #             STRIP_WHITESPACE_REGEX_FLAVOR is not defined.
-    #             Please change the value when calling minify function.
+                STRIP_WHITESPACE_REGEX_FLAVOR is not defined.
+                Please change the value when calling minify function.
 
-    #                 Current Value : { str(STRIP_WHITESPACE_REGEX_FLAVOR) }
-    #                 It must be one of these :
-    #                     |>  str("plain")
-    #                     |>  str("alpinejs")
-    #                     |>  str("petitevue")"""
-    #     )
+                    Current Value : { str(STRIP_WHITESPACE_REGEX_FLAVOR) }
+                    It must be one of these :
+                        |>  str("plain")
+                        |>  str("alpinejs")
+                        |>  str("petitevue")"""
+        )
 
     # Declare some variables here
     decompressed_buffer: bytes = b""

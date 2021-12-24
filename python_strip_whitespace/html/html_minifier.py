@@ -130,7 +130,7 @@ def unquote_html_attributes(html: str) -> str:
         "\"\s\s+\w+=\"|'\s\s+\w+='|\"\s\s+\w+=|'\s\s+\w+=", re.MULTILINE
     )
     space6: re.Pattern = re.compile(r"\d\s+>", re.MULTILINE)
-    quotes_in_tag: re.Pattern = re.compile('([a-zA-Z]+)="([a-zA-Z0-9-_\.]+)"')
+    quotes_in_tag: re.Pattern = re.compile('([a-zA-Z]+)="([a-zA-Z0-9-_.]+)"')
 
     # iterate on a for loop cleaning stuff up on the html markup.
     for tag in iter(any_tag.findall(html)):

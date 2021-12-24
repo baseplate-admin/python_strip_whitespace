@@ -16,7 +16,7 @@ packages = [
 ]
 
 
-package_data = {"": ["python_strip_whitespace/*"]}
+package_data = {"": ["python-strip-whitespace/*"]}
 extras_require = {
     "brotli": [
         "Brotli; implementation_name == 'cpython'",
@@ -31,7 +31,7 @@ install_requires = [
 
 setup_kwargs = setup(
     name="python-strip-whitespace",
-    version="0.0.5",
+    version="0.0.6",
     description="A powerful HTML whitespace remover for python",
     long_description=long_description,
     author="baseplate-admin",
