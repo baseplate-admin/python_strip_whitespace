@@ -40,7 +40,7 @@ Why use "python_stip_whitespace" ?
 *   Is very customizable. ( You can configure lower level `minify-html <https://github.com/wilsonzlin/minify-html/blob/master/python/src/lib.template.rs/>`_ rust bindings and also the lower level `python <https://github.com/juancarlospaco/css-html-js-minify/blob/master/css_html_js_minify/html_minifier.py/>`_ bindings when calling minify  )
 
 
-Why souldn't you use python_stip_whitespace ?
+Why shouldn't you use python_stip_whitespace ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *   Adds unnecessary ';;' in HTML. ( If you know any regex to fix this please put a pull request )
 
