@@ -19,7 +19,4 @@ except ImportError:
 
 
 def decompress(buffer: bytes) -> str:
-    try:
-        return zstd.decompress(buffer)
-    except Exception as e:
-        raise e
+    return zstd.decompress(buffer)
