@@ -51,7 +51,7 @@ Requirements :
 *    `minify-html <https://github.com/wilsonzlin/minify-html>`_ 
 *    Python 3 ( Should work with all version? )
 *    Brotli ( or BrotliPy ) | ( Optional )
-*    ZSTD ( Optional ) 
+*    ZSTD ( Optional ) ``Isn't supperted by modern browsers``
 
 Used Internally by :
 ====================
