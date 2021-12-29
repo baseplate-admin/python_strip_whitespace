@@ -20,7 +20,4 @@ except ImportError:
 
 
 def compress(string: bytes) -> bytes:
-    try:
-        return zstd.compress(string)
-    except Exception as e:
-        raise e
+    return zstd.compress(string)

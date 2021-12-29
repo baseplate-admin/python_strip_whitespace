@@ -22,7 +22,4 @@ except ImportError:
 
 
 def decompress(buffer: bytes) -> str:
-    try:
-        return brotli.decompress(buffer)
-    except Exception as e:
-        raise e
+    return brotli.decompress(buffer)

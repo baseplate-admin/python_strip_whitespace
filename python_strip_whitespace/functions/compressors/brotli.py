@@ -22,7 +22,4 @@ except ImportError:
 
 
 def compress(string: bytes) -> bytes:
-    try:
-        return brotli.compress(string)
-    except Exception as e:
-        raise e
+    return brotli.compress(string)
