@@ -117,3 +117,5 @@ dmypy.json
 .vscode/*
 new.html
 Pipfile.lock
+
+dist/

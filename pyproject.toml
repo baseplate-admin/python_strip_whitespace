@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "python-strip-whitespace"
+version = "0.1.0"
+description = "A powerful HTML whitespace remover for python"
+authors = ["baseplate-admin <61817579+baseplate-admin@users.noreply.github.com>"]
+license = "GPLv3"
+readme = "README.rst"
+packages = [{include = "python_strip_whitespace"}]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+minify-html = "^0.10.8"
+
+
+[tool.poetry.group.dev.dependencies]
+readme-renderer = "^37.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
