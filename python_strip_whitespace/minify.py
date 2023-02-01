@@ -10,15 +10,12 @@ from .html import (
     unmangle_nbsp,
 )
 
-# Guess the file content
-from .functions import guess
-
 # Import helper functions
 from .html import add_line_break
 
 
 def minify(
-    buffer: bytes,
+    buffer: str,
     # Rust
     STRIP_WHITESPACE_RUST_DO_NOT_MINIFY_DOCTYPE: t.Optional[bool] = True,
     STRIP_WHITESPACE_RUST_ENSURE_SPEC_CONPLIANT_UNQUOTED_ATTRIBUTE_VALUES: t.Optional[
@@ -49,7 +46,6 @@ def minify(
     #   Errors ⚠️
     #   Checked here ✔️ | ❌
 
-  
     # ❌ STRIP_WHITESPACE_REGEX_FLAVOR is not defined in module
     if str(STRIP_WHITESPACE_REGEX_FLAVOR) not in [
         str("plain"),
@@ -71,10 +67,9 @@ def minify(
 
     # Declare some variables here
 
-   
     #   First change the &nbsp; into a special character so the other compressors cant mangle with that.
     first_iter: str = mangle_nbsp(
-        buffer.decode(),
+        buffer,
         STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER,
     )
 
