@@ -42,9 +42,6 @@ def minify(
     # NBSP character setting
     STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER: t.Optional[str] = "'অ'",
     # Compression Settings
-    STRIP_WHITESPACE_COMPRESSION_TYPE: t.Optional[str] = str(
-        "decompressed"  # Lets default to decompressed bytes
-    ),
     STRIP_WHITESPACE_REGEX_FLAVOR: t.Optional[str] = str(
         "alpinejs"  # Lets default it to alpinejs.
     ),
@@ -52,22 +49,7 @@ def minify(
     #   Errors ⚠️
     #   Checked here ✔️ | ❌
 
-    #   ❌ STRIP_WHITESPACE_COMPRESSION_TYPE is neither 'decompressed' nor 'compressed
-    if str(STRIP_WHITESPACE_COMPRESSION_TYPE) not in [
-        str("compressed"),
-        str("decompressed"),
-    ]:
-        raise ValueError(
-            f"""Error in python_strip_whitespace.compress
-
-                    STRIP_WHITESPACE_COMPRESSION_TYPE is neither 'decompressed' nor 'compressed.
-                    Please change the value when calling minify function.
-
-                        Current Value : { str(STRIP_WHITESPACE_COMPRESSION_TYPE) }
-                        It must be one of these :
-                            |> str('compressed')
-                            |> str('decompressed')"""
-        )
+  
     # ❌ STRIP_WHITESPACE_REGEX_FLAVOR is not defined in module
     if str(STRIP_WHITESPACE_REGEX_FLAVOR) not in [
         str("plain"),
@@ -88,37 +70,11 @@ def minify(
         )
 
     # Declare some variables here
-    decompressed_buffer: bytes = b""
-    return_buffer: bytes = b""
 
-    # We check if the HTML that the server sent us is compressed or decompressed.
-    # If the string is decompressed then just set buffer type to plain
-    if STRIP_WHITESPACE_COMPRESSION_TYPE == str("compressed"):
-        buffer_type: str = guess(buffer).lower()
-    elif STRIP_WHITESPACE_COMPRESSION_TYPE == str("decompressed"):
-        buffer_type: str = "plain"
-
-    # If the buffer is not plain text, check for compression type.
-    # But if the buffer is just plain text, don't do unnecessary checks.
-    if buffer_type == "plain":
-        decompressed_buffer = buffer
-
-    elif buffer_type == "gzip":
-        from .functions.decompressors.gzip import decompress as gz_decompress
-
-        decompressed_buffer = gz_decompress(buffer)
-    elif buffer_type == "br":
-        from .functions.decompressors.brotli import decompress as br_decompress
-
-        decompressed_buffer = br_decompress(buffer)
-    elif buffer_type == "zstd":
-        from .functions.decompressors.zstd import decompress as zstd_decompress
-
-        decompressed_buffer = zstd_decompress(buffer)
-
+   
     #   First change the &nbsp; into a special character so the other compressors cant mangle with that.
     first_iter: str = mangle_nbsp(
-        decompressed_buffer.decode(),
+        buffer.decode(),
         STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER,
     )
 
@@ -156,28 +112,9 @@ def minify(
     )
 
     #   Replace special character with &nbsp;
-    last_iter: bytes = unmangle_nbsp(
+    return_buffer: bytes = unmangle_nbsp(
         fourth_iter,
         STRIP_WHITESPACE_NBSP_MANGLE_CHARACTER,
     ).encode()
-
-    # Compress the buffer
-    if buffer_type == "plain":
-        return_buffer = last_iter
-
-    elif buffer_type == "gzip":
-        from .functions.compressors.gzip import compress as gz_compress
-
-        return_buffer = gz_compress(last_iter)
-
-    elif buffer_type == "br":
-        from .functions.compressors.brotli import compress as br_compress
-
-        return_buffer = br_compress(last_iter)
-
-    elif buffer_type == "zstd":
-        from .functions.compressors.zstd import compress as zstd_compress
-
-        return_buffer = zstd_compress(last_iter)
 
     return return_buffer
