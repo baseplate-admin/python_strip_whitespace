@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "python-strip-whitespace"
-version = "0.1.0"
+version = "0.1.1"
 description = "A powerful HTML whitespace remover for python"
 authors = ["baseplate-admin <61817579+baseplate-admin@users.noreply.github.com>"]
 license = "GPLv3"
